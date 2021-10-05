@@ -7,24 +7,24 @@ recebendo duas notas
 
 int main()
 {
-    float nota1, nota2, m, mArit;
+    float nota1, nota2, media, mediaAritmetica;
     printf("\nValor da primeira nota: ");
     scanf("%f", &nota1);
     printf("\nValor da segunda nota: ");
     scanf("%f", &nota2);
-    m = nota1+nota2;
-    mArit = m/2;
-    if (mArit <= 3)
+    media = nota1 + nota2;
+    mediaAritmetica = media / 2;
+    if (mediaAritmetica <= 3)
     {
-        printf("\nVoce esta reprovado, com media: %.2f", mArit);
+        printf("\nVoce esta reprovado, com media: %.2f", mediaAritmetica);
     }
-    else if (mArit > 3 && mArit <= 7)
+    else if (mediaAritmetica > 3 && mediaAritmetica <= 7)
     {
-        printf("\n\nVoce precisara fazer um Exame, sua media foi %.2f", mArit);
+        printf("\n\nVoce precisara fazer um Exame, sua media foi %.2f", mediaAritmetica);
     }
-    else if (mArit > 7 && mArit <=10)
+    else if (mediaAritmetica > 7 && mediaAritmetica <= 10)
     {
-        printf("\n\nVoce foi aprovado, parabens! Sua media foi %.2f", mArit);
-    }  
+        printf("\n\nVoce foi aprovado, parabens! Sua media foi %.2f", mediaAritmetica);
+    }
     return 0;
 }

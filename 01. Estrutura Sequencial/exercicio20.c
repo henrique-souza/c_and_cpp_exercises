@@ -4,7 +4,12 @@ por uma escada apoiada no chC#o e a distancia que a escada
 estC! da parede. Calcular e mostrar a medida da escada para que 
 possa alcancar a ponta da parede
 */
-#include <stdio.h>
+
+/*
+Este exercício abaixo encontra-se incompleto.
+*/
+
+/*#include <stdio.h>
 
 int main()
 {
@@ -17,4 +22,4 @@ int main()
     printf("Angulo: %d graus.", angulo);
     printf("\nDistancia: %f graus.", distancia);
     return 0;
-}
+}*/
