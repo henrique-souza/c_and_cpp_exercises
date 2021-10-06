@@ -1,26 +1,36 @@
+/*
+Modificar e estudar.
+*/
 #include <stdio.h>
 
-main()
+int main()
 {
-    struct cliente
+    // estrutura 'clientes', se refere aos clientes do banco
+    struct clientes
     {
-        char nome[20];
-        float saldo;
+        // atributos do cliente
+        // nome com até 20 caracteres
+        char nomeDoCliente[20];
+        // saldo do cliente
+        float saldoDoCliente;
     };
-    cliente cli;
+    // criando o 'cliente1' com atributos de 'clientes'
+    clientes cliente1;
 
-    printf("\t\t\tCONTROLE BANCARIO\n");
-    printf("\tNome do Cliente: ");
-    gets(cli.nome);
-    printf("\tSaldo: ");
-    scanf("%f", &cli.saldo);
+    printf("\t\tCONTROLE BANCARIO");
+    printf("\nNome do Cliente: ");
+    // recolhe o nome do cliente e armazena no atributo.
+    gets(cliente1.nomeDoCliente);
+    printf("\nSaldo: ");
+    // recolhe o saldo e armazena no atributo
+    scanf("%f", &cliente1.saldoDoCliente);
 
-    if (cli.saldo >= 0)
+    if (cliente1.saldoDoCliente >= 0)
     {
-        printf("\t %s", cli.nome);
+        printf("\nS%s, seu saldo se encontra POSITIVO.", cliente1.nomeDoCliente);
     }
     else
     {
-        printf("\tDevedor %s", cli.nome);
+        printf("\n%s, seu saldo se encontra NEGATIVO.", cliente1.nomeDoCliente);
     }
 }
