@@ -1,11 +1,11 @@
 /*ALGORITMO
 INICIO
-declare quantidadeSal, salFuncionario, salminAtual
+declare quantidadeSalarios, salarioFuncionario, salarioMinimoAtual
 escreva Qual valor do Salario Minimo atual?
-leia salminAtual
+leia salarioMinimoAtual
 escreva Qual valor do Salario do Funcionario?
-leia salFuncionario
-quantidadeSal = salFuncionario/salminAtual
+leia salarioFuncionario
+quantidadeSalarios = salarioFuncionario/salarioMinimoAtual
 escreva Quantos salários minimos este funcionário ganha?
 FIM
 */
@@ -13,12 +13,12 @@ FIM
 
 int main()
 {
-   float quantidadeSal, salFuncionario, salminAtual, quantDepessoas;
-      printf ("Qual valor do Salario do Funcionario? ");
-   scanf ("%f", &salFuncionario);
-   printf ("Qual valor do Salario Minimo atual? ");
-   scanf ("%f", &salminAtual);
-   quantidadeSal = salFuncionario / salminAtual;
-   printf ("\nEste funcionário ganha, aproximadamente, %.1f salários minimos", quantidadeSal);
-       return 0;
+   float quantidadeSalarios, salarioFuncionario, salarioMinimoAtual;
+   printf("Qual valor do Salario do Funcionario? ");
+   scanf("%f", &salarioFuncionario);
+   printf("Qual valor do Salario Minimo atual? ");
+   scanf("%f", &salarioMinimoAtual);
+   quantidadeSalarios = salarioFuncionario / salarioMinimoAtual;
+   printf("\nEste funcionário ganha, aproximadamente, %.1f salários minimos", quantidadeSalarios);
+   return 0;
 }
