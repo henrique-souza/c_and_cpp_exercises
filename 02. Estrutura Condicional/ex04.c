@@ -4,22 +4,24 @@
 
 int main()
 {
-    float num1, num2, num3;
+    float number1, number2, number3;
+
     printf("\nPrimeiro numero: ");
-    scanf("%f", &num1);
+    scanf("%f", &number1);
     printf("\nSegundo numero: ");
-    scanf("%f", &num2);
+    scanf("%f", &number2);
     printf("\nTerceiro numero: ");
-    scanf("%f", &num3);
-    if (num1 > num2 && num1 > num3)
+    scanf("%f", &number3);
+
+    if (number1 > number2 && number1 > number3)
     {
         printf("O primeiro numero e o maior.");
     }
-    else if (num2 > num1 && num2 > num3)
+    else if (number2 > number1 && number2 > number3)
     {
         printf("O segundo numero e o maior.");
     }
-    else if (num3 > num1 && num3 > num2)
+    else if (number3 > number1 && number3 > number2)
     {
         printf("O terceiro numero e o maior.");
     }
