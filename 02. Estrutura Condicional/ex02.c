@@ -8,12 +8,14 @@ recebendo duas notas
 int main()
 {
     float nota1, nota2, media, mediaAritmetica;
+
     printf("\nValor da primeira nota: ");
     scanf("%f", &nota1);
     printf("\nValor da segunda nota: ");
     scanf("%f", &nota2);
     media = nota1 + nota2;
     mediaAritmetica = media / 2;
+
     if (mediaAritmetica <= 3)
     {
         printf("\nVoce esta reprovado, com media: %.2f", mediaAritmetica);
