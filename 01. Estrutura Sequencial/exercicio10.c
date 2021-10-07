@@ -13,13 +13,13 @@ FIM
 
 int main()
 {
-   float areaDoQuadrado, ladoA, ladoB;
-   printf ("Qual valor do Lado A? ");
-   scanf ("%f", &ladoA);
-   printf ("Qual valor do Lado B? ");
-   scanf ("%f", &ladoB);
-   areaDoQuadrado = ladoA * ladoB;
-   printf ("\nQual a área do quadrado? %.2f", areaDoQuadrado);
-   
-       return 0;
+    float areaDoQuadrado, ladoA, ladoB;
+    printf("Qual valor do Lado A? ");
+    scanf("%f", &ladoA);
+    printf("Qual valor do Lado B? ");
+    scanf("%f", &ladoB);
+    areaDoQuadrado = ladoA * ladoB;
+    printf("\nQual a área do quadrado? %.2f", areaDoQuadrado);
+
+    return 0;
 }

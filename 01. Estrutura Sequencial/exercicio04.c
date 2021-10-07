@@ -15,15 +15,15 @@ FIM
 
 int main()
 {
-   float nota1, nota2, somaDasNotas, mediaPonderada;
-   printf ("Valor da Primeira Nota: ");
-   scanf ("%f", &nota1);
-   printf ("Valor da Segunda Nota: ");
-   scanf ("%f", &nota2);
-   somaDasNotas = nota1*2 + nota2*3;
-   printf ("\nResultado da Soma das Notas = %.1f", somaDasNotas);
-   mediaPonderada = somaDasNotas/5;
-   printf ("\nResultado da Média Ponderada = %.1f", mediaPonderada);
-   
-       return 0;
+    float nota1, nota2, somaDasNotas, mediaPonderada;
+    printf("Valor da Primeira Nota: ");
+    scanf("%f", &nota1);
+    printf("Valor da Segunda Nota: ");
+    scanf("%f", &nota2);
+    somaDasNotas = nota1 * 2 + nota2 * 3;
+    printf("\nResultado da Soma das Notas = %.1f", somaDasNotas);
+    mediaPonderada = somaDasNotas / 5;
+    printf("\nResultado da Média Ponderada = %.1f", mediaPonderada);
+
+    return 0;
 }
