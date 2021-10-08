@@ -1,6 +1,6 @@
 /*programa recebe dois numeros
 fazer menu que retorne:
-a) O primeiro número elevado ao segundo número.
+a) O primeiro número potenciacao ao segundo número.
 b) Raiz quadrada de cada um dos números.
 c) Raiz cúbica de cada um dos números.
 */
@@ -8,29 +8,32 @@ c) Raiz cúbica de cada um dos números.
 #include <stdlib.h>
 #include <math.h>
 
-void elev();
-void quad();
-void cubi();
+void potenciacao();
+void calcularRaizQuadrada();
+void calcularRaizCubica();
+
 int main()
 {
-    char op;
-    printf("        Menu de Opcoes           \n");
-    printf("\n janeiro) - O primeiro numero elevado ao segundo numero.");
+    char opcaoEscolhida;
+
+    printf("\t\t\tMenu de Opcoes\n");
+    printf("\n a) - O primeiro numero potenciacao ao segundo numero.");
     printf("\n b) - Raiz quadrada de cada um dos numeros.");
     printf("\n c) - Raiz cubica de cada um dos numeros.");
     printf("\n d) - Sair do programa");
     printf("\n\nOpcao Escolhida: ");
-    scanf("%c", &op);
-    switch (op)
+    scanf("%c", &opcaoEscolhida);
+
+    switch (opcaoEscolhida)
     {
     case 'a':
-        elev();
+        potenciacao();
         break;
     case 'b':
-        quad();
+        calcularRaizQuadrada();
         break;
     case 'c':
-        cubi();
+        calcularRaizCubica();
         break;
     case 'd':
         printf("\nO programa sera fechado.");
@@ -40,33 +43,41 @@ int main()
     }
     return 0;
 }
-void elev()
+
+void potenciacao()
 {
-    float n1, n2, elevado;
+    float number1, number2, potenciacao;
+
     printf("\nNumero que deseja calcular: ");
-    scanf("%f", &n1);
+    scanf("%f", &number1);
     printf("\nElevado a qual numero?  ");
-    scanf("%f", &n2);
-    elevado = pow(n1, n2);
-    printf("\n\nO resultado e: %.2f", elevado);
+    scanf("%f", &number2);
+
+    potenciacao = pow(number1, number2);
+
+    printf("\n\nO resultado e: %.2f", potenciacao);
 }
-void quad()
+
+void calcularRaizQuadrada()
 {
-    float n1, n2;
+    float number1, number2;
+
     printf("\nPrimeiro numero para calculo da Raiz Quadrada:  ");
-    scanf("%f", &n1);
+    scanf("%f", &number1);
     printf("\nSegundo numero para calculo da Raiz Quadrada:  ");
-    scanf("%f", &n2);
-    printf("\nRaiz quadrada do primeiro numero digitado: %.3f", sqrt(n1));
-    printf("\nRaiz quadrada do segundo numero digitado: %.3f", sqrt(n2));
+    scanf("%f", &number2);
+    printf("\nRaiz quadrada do primeiro numero digitado: %.3f", sqrt(number1));
+    printf("\nRaiz quadrada do segundo numero digitado: %.3f", sqrt(number2));
 }
-void cubi()
+
+void calcularRaizCubica()
 {
-    float n1, n2, cubica;
+    float number1, number2, cubica;
+
     printf("\nPrimeiro numero para calculo da Raiz Cubica:  ");
-    scanf("%f", &n1);
+    scanf("%f", &number1);
     printf("\nSegundo numero para calculo da Raiz Cubica:  ");
-    scanf("%f", &n2);
-    printf("\nRaiz cubica do primeiro numero digitado: %.3f", cbrt(n1));
-    printf("\nRaiz cubica do segundo numero digitado: %.3f", cbrt(n2));
+    scanf("%f", &number2);
+    printf("\nRaiz cubica do primeiro numero digitado: %.3f", cbrt(number1));
+    printf("\nRaiz cubica do segundo numero digitado: %.3f", cbrt(number2));
 }
