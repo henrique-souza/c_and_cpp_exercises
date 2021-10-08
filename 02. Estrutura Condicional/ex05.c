@@ -8,90 +8,112 @@ Não existe divisão com denominador 0.
 #include <stdlib.h>
 #include <math.h>
 
-void media();
-void difer();
-void prod();
-void divis();
+void calcularMedia();
+void calcularDiferenca();
+void calcularProduto();
+void calcularDivisao();
+
 int main()
 {
-    int op;
-    printf("             Menu de Opcoes           \n");
+    int opcaoEscolhida;
+
+    printf("\t\t\tMenu de Opcoes");
     printf("\n 1 - Media entre dois numeros");
     printf("\n 2 - Diferenca do numero maior pelo menor");
     printf("\n 3 - Produto entre os numeros");
     printf("\n 4 - Divisao dos numeros");
     printf("\n 5 - Sair do programa");
     printf("\n\n Opcao Escolhida:  ");
-    scanf("%d", &op);
-    switch (op)
+    scanf("%divisao", &opcaoEscolhida);
+
+    switch (opcaoEscolhida)
     {
     case 1:
-        media();
+        calcularMedia();
         break;
-        case 2:
-        difer();
+    case 2:
+        calcularDiferenca();
         break;
-        case 3: prod();
+    case 3:
+        calcularProduto();
         break;
-        case 4: divis();
+    case 4:
+        calcularDivisao();
         break;
-        case 5: printf("O programa foi fechado.");
-        break;    
+    case 5:
+        printf("O programa foi fechado.");
+        break;
     default:
-    printf ("Opcao Invalida. Digite uma correta");
+        printf("Opcao Invalida. Digite uma correta");
     }
     return 0;
 }
-void media()
+
+void calcularMedia()
 {
-float m, n1, n2;
-printf("\nPrimeiro Numero:  ");
-scanf("%f", &n1);
-printf("Segundo Numero:  ");
-scanf("%f", &n2);
-m = n1+n2;
-printf("\nA Media destes numeros:  %.2f", m/2);
+    float media, number1, number2;
+
+    printf("\nPrimeiro Numero:  ");
+    scanf("%f", &number1);
+    printf("Segundo Numero:  ");
+    scanf("%f", &number2);
+
+    media = number1 + number2;
+    media = media / 2;
+
+    printf("\nA Media destes numeros:  %.2f", media);
 }
-void difer()
+
+void calcularDiferenca()
 {
-float n1, n2;
-printf("\nPrimeiro numero: ");
-scanf("%f", &n1);
-printf("\nSegundo numero:  ");
-scanf("%f", &n2);
-if (n1 > n2)
-{
-    printf("A diferenca do primeiro numero para o segundo: %.2f", (n1-n2));
+    float number1, number2;
+
+    printf("\nPrimeiro numero: ");
+    scanf("%f", &number1);
+    printf("\nSegundo numero:  ");
+    scanf("%f", &number2);
+
+    if (number1 > number2)
+    {
+        printf("A diferenca do primeiro numero para o segundo: %.2f", (number1 - number2));
     }
     else
     {
-        printf("A diferenca do segundo numero para o primeiro: %.2f", (n2-n1));
+        printf("A diferenca do segundo numero para o primeiro: %.2f", (number2 - number1));
     }
 }
-void prod() //é o mesmo que multiplicação
+
+void calcularProduto()
 {
-    float n1, n2, mult;
-printf("\nPrimeio numero:  ");
-scanf("%f", &n1);
-printf("Segundo numero:  ");
-scanf("%f", &n2);
-mult = n1*n2;
-printf("\n\nResultado do produto entre dois numeros:  %.2f", mult);
+    float number1, number2, multiplicacao;
+
+    printf("\nPrimeio numero:  ");
+    scanf("%f", &number1);
+    printf("Segundo numero:  ");
+    scanf("%f", &number2);
+
+    multiplicacao = number1 * number2;
+
+    printf("\n\nResultado do produto entre dois numeros:  %.2f", multiplicacao);
 }
-void divis()
+
+void calcularDivisao()
 {
-    float n1, n2, d;
+    float number1, number2, divisao;
+
     printf("\nEscreva o Numerador:  ");
-    scanf("%f", &n1);
+    scanf("%f", &number1);
     printf("\nEscreva o Denominador:  ");
-    scanf("%f", &n2);
-    d = n1/n2;
-    if (n2<=0)
+    scanf("%f", &number2);
+
+    divisao = number1 / number2;
+
+    if (number2 <= 0)
     {
         printf("\nNao existe divisao quando o denominador < ou = a 0");
     }
     else
     {
-        printf("\nO resultado desta divisao:  %.2f", d);
+        printf("\nO resultado desta divisao:  %.2f", divisao);
     }
 }
