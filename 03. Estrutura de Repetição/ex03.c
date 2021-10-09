@@ -8,24 +8,24 @@ porcentagem das pessoas na ultima faixa etaria ' "  "   " "    "     "     "
 
 int main()
 {
-    int idade, i, qtdF1=0, qtdF2=0, qtdF3=0, qtdF4=0, qtdF5=0;
-    for (i = 1; i <=4; i++)
+    int idade, i, qtdF1 = 0, qtdF2 = 0, qtdF3 = 0, qtdF4 = 0, qtdF5 = 0;
+    for (i = 1; i <= 4; i++)
     {
         printf("Sua idade: ");
         scanf("%d", &idade);
-        if (idade<=15)
+        if (idade <= 15)
         {
             qtdF1++;
         }
-        else if (idade<=30)
+        else if (idade <= 30)
         {
             qtdF2++;
         }
-        else if (idade<=45)
+        else if (idade <= 45)
         {
             qtdF3++;
         }
-        else if (idade<=60)
+        else if (idade <= 60)
         {
             qtdF4++;
         }
@@ -40,6 +40,6 @@ int main()
     printf("\nQuantidade de pessoas na Faixa 3: %d ", qtdF3);
     printf("\nQuantidade de pessoas na Faixa 4: %d ", qtdF4);
     printf("\nQuantidade de pessoas na Faixa 5: %d ", qtdF5);
-    printf("\n\nO percentual das pessoas na Faixa 1: %d %%", qtdF1*100/(i-1));
-    printf("\nO percentual das pessoas na Faixa 5: %d %%", qtdF5*100/(i-1));
+    printf("\n\nO percentual das pessoas na Faixa 1: %d %%", qtdF1 * 100 / (i - 1));
+    printf("\nO percentual das pessoas na Faixa 5: %d %%", qtdF5 * 100 / (i - 1));
 }

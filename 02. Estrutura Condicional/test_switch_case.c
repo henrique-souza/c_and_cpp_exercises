@@ -1,10 +1,12 @@
 #include <stdio.h>
 int main()
 {
-    int i;
+    int number;
+
     printf("Digite um número: ");
-    scanf("%d%*c", &i);
-    switch (i)
+    scanf("%d%*c", &number);
+
+    switch (number)
     {
     case 1:
         printf("Número 1");

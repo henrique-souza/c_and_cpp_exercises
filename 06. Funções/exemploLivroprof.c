@@ -10,7 +10,7 @@ float calculaPerimetro(float a, float b)
     return 2 * a + 2 * b;
 }
 
-void mostraMensagem(char *msg, float vlr)
+void mostraMensagem(char msg, float vlr)
 {
     printf("%s %5.2f", msg, vlr);
 }
