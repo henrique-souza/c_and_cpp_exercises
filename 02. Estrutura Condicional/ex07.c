@@ -11,13 +11,13 @@ int main()
     float sal;
     printf("\nDigite seu salario atualmente: ");
     scanf("%f", &sal);
-    if (sal<=500.00)
+    if (sal <= 500.00)
     {
-        printf("\nVoce recebera um reajuste. Seu salario sera de: %.2f", sal+sal*30/100);
+        printf("\nVoce recebera um reajuste. Seu salario sera de: %.2f", sal + sal * 30 / 100);
     }
     else
     {
         printf("\nVoce nao tera direito ao beneficio neste momento.");
     }
-    return 0;    
+    return 0;
 }

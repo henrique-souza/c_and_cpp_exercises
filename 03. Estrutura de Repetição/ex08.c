@@ -13,7 +13,7 @@ objetivo:
 int main()
 {
     int i, idade, peso, altura, olhos, cabelo;
-    
+
     for (i = 1; i <= 4; i++)
     {
         printf("\n%d de 4", i);

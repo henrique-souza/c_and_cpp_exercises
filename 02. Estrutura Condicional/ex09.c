@@ -2,8 +2,10 @@
 int main()
 {
     float saldo_medio, valor_medio;
+    
     printf("\nDigite seu saldo medio do ano anterior:  ");
     scanf("%f", &saldo_medio);
+
     if (saldo_medio <= 200)
     {
         valor_medio = saldo_medio * 0.10;
