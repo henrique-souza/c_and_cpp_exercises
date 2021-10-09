@@ -5,6 +5,7 @@ REALIZAR A TAREFA A1 ATÉ DIA 19/10/2021
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+
 /* Comentario: Declaracao da Estrutura Nodo */
 typedef struct sNodo
 {
@@ -113,12 +114,14 @@ void removerEle(ListaSimplesEnc *pList, int v)
 /* Tarefa */
 void removerTudo(ListaSimplesEnc *pList)
 {
+
 }
 
 /* Comentario: Alterar Elemento da Lista */
 /* Tarefa */
 void alterarEle(ListaSimplesEnc *pList, int v1, int v2)
 {
+
 }
 
 /* Comentario: Lista Vazia */
@@ -128,13 +131,16 @@ int estaVazia(ListaSimplesEnc *pList)
 }
 
 /* Comentario: Programa Principal */
-main()
+int main()
 {
 	setlocale(LC_ALL, "portuguese");
+
 	ListaSimplesEnc minhaLista;
 	int valor, op, valorAlt;
+
 	criarLista(&minhaLista);
 	printf("Escolha uma op��o:\n");
+
 	while (1)
 	{
 		printf("\n(1) Inserir elemento no in�cio da Lista\n");
@@ -147,6 +153,7 @@ main()
 		printf(" ? ");
 		scanf("%d", &op);
 		system("cls");
+
 		switch (op)
 		{
 		case 1: // inserir elemento no inicio
