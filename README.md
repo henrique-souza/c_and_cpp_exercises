@@ -4,3 +4,4 @@ PT
 
 EN 
 > Exercises using the C/C++ programming language. I'm refactoring some college exercises. Some of them made in haste or using online compilers, this explains the lack of readability.
+
