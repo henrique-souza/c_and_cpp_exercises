@@ -8,26 +8,30 @@ int main()
 
 	for (i = 1; i <= 4; i++)
 	{
-		printf("\n------------ %d de 4 --------------------------------", i);
-		printf("\nIdade..: ");
+		printf("\n\t\t\t\t%d de 4 ", i);
+		printf("\nIdade: ");
 		scanf("%d", &idade);
-		printf("Peso..: ");
+		
+		printf("Peso: ");
 		scanf("%f", &peso);
-		printf("Altura..: ");
+
+		printf("Altura: ");
 		scanf("%f", &altura);
-		printf("Cor dos Olhos ");
+
+		printf("Cor dos Olhos");
 		printf("\n[1] Azul ");
 		printf("\n[2] Preto ");
 		printf("\n[3] Verde ");
 		printf("\n[4] Castanho ");
-		printf("\nCor dos Olhos..: ");
+		printf("\nCor dos Olhos: ");
 		scanf("%d", &olhos);
-		printf("Cor dos Cabelos ");
-		printf("\n[1] Preto ");
-		printf("\n[2] Castanho ");
-		printf("\n[3] Loiro ");
-		printf("\n[4] Ruivo ");
-		printf("\nCor dos Cabelos..: ");
+
+		printf("Cor dos Cabelos");
+		printf("\n[1] Preto");
+		printf("\n[2] Castanho");
+		printf("\n[3] Loiro");
+		printf("\n[4] Ruivo");
+		printf("\nCor dos Cabelos:");
 		scanf("%d", &cabelo);
 		// Quantidade de pessoas com idade superior a 50 anos e peso inferior a 60 quilos.
 		if (idade > 50 && peso < 60)
@@ -54,9 +58,9 @@ int main()
 	} // fim for
 	// Saída de dados
 	printf("\n-----------------------------Resultado--------------------------------------------------------------");
-	printf("\nQuantidade de pessoas com idade superior a 50 anos e peso inferior a 60 quilos..: % d", qtdIdPe);
-	printf("\nMedia das idades das pessoas com altura inferior a 1.50 metros..: %d anos", somaId / qtdId);
+	printf("\nQuantidade de pessoas com idade superior a 50 anos e peso inferior a 60 quilos: % d", qtdIdPe);
+	printf("\nMedia das idades das pessoas com altura inferior a 1.50 metros: %d anos", somaId / qtdId);
 	printf("\nPercentagem de pessoas com olhos azuis entre todas as pessoas analisadas: %d%%", qtdOlhos * 100 / (i - 1));
-	printf("\nQuantidade de pessoas que são ruivas e não tem olhos azuis..: %d", qtdRu);
+	printf("\nQuantidade de pessoas que são ruivas e não tem olhos azuis: %d", qtdRu);
 	return 0;
 }
