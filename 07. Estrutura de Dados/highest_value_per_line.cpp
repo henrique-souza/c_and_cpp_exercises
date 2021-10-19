@@ -5,9 +5,9 @@
 
 main()
 {
-    int matriz[2][3], linha, coluna, valorMaior;
-    
-    for (linha = 0; linha < 2; linha++)
+	int matriz[2][3], linha, coluna, valorMaior;
+
+	for (linha = 0; linha < 2; linha++)
 	{
 		for (coluna = 0; coluna < 3; coluna++)
 		{
@@ -16,27 +16,27 @@ main()
 		}
 		printf("\n");
 	}
-	
-	printf ("\nDADOS ARMAZENADOS\n\n");
+
+	printf("\nDADOS ARMAZENADOS\n\n");
 	for (linha = 0; linha < 2; linha++)
 	{
-	    for (coluna = 0; coluna < 3; coluna++)
-	    {
-	        printf ("%d ", matriz[linha][coluna]); 
-	    }
-	    printf ("\n"); 
+		for (coluna = 0; coluna < 3; coluna++)
+		{
+			printf("%d ", matriz[linha][coluna]);
+		}
+		printf("\n");
 	}
 
 	printf("\nMAIOR NUMERO POR LINHA");
-	printf ("\n"); 
+	printf("\n");
 	for (linha = 0; linha < 2; linha++)
 	{
 		printf("\nLinha %d\n", linha + 1);
 		valorMaior = 0;
 		for (coluna = 0; coluna < 3; coluna++)
 		{
-		    if (matriz[linha][coluna] > valorMaior)
-		    valorMaior = matriz[linha][coluna];
+			if (matriz[linha][coluna] > valorMaior)
+				valorMaior = matriz[linha][coluna];
 		}
 		printf("Valor maior por linha: %d", valorMaior);
 	}

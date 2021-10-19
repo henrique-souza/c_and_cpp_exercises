@@ -1,41 +1,41 @@
-/* Comentario: Lista Simplesmente Encadeada */
+// Lista Simplesmente Encadeada
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-/* Comentario: Declaracao da Estrutura Nodo */
+// Declaracao da Estrutura Nodo
 typedef struct sNodo
 {
 	int info;
 	struct sNodo *prox;
 } Nodo;
 
-/* Comentario: Declaracao da Estrutura Lista Simplesmente Encadeada */
+// Declaracao da Estrutura Lista Simplesmente Encadeada
 typedef struct sListaSimplesEnc
 {
 	Nodo *prim;
 
-} ListaSimplesEnc;
+} ListaSimplesmenteEncadeada;
 
-/* Comentario: Criar Lista Vazia */
-void criarLista(ListaSimplesEnc *pList)
+// Criar Lista Vazia
+void criarLista(ListaSimplesmenteEncadeada *pList)
 {
 	pList->prim = NULL;
 }
 
-/* Comentario: Mostrar Elementos da Lista */
-void mostrarLista(ListaSimplesEnc *pList)
+// Mostrar Elementos da Lista
+void imprimirListasSalvas(ListaSimplesmenteEncadeada *pList)
 {
-	Nodo *p;
+	Nodo *ponteiro;
 	printf("Lista: ");
-	for (p = pList->prim; p != NULL; p = p->prox)
+	for (ponteiro = pList->prim; ponteiro != NULL; ponteiro = ponteiro->prox)
 	{
-		printf("%d -> ", p->info);
+		printf("%d -> ", ponteiro->info);
 	}
 	printf("NULL\n");
 }
 
-/* Comentario: Inserir no Inicio da Lista */
-void inserirIni(ListaSimplesEnc *pList, int v)
+// Inserir no Inicio da Lista
+void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *pList, int v)
 {
 	Nodo *novo;
 	novo = (Nodo *)malloc(sizeof(Nodo));
@@ -51,8 +51,8 @@ void inserirIni(ListaSimplesEnc *pList, int v)
 	}
 }
 
-/* Comentario: Remover no Inicio da Lista */
-void removerIni(ListaSimplesEnc *pList)
+// Remover no Inicio da Lista
+void removerIni(ListaSimplesmenteEncadeada *pList)
 {
 	Nodo *pAux = pList->prim;
 	if (pAux != NULL)
@@ -67,8 +67,8 @@ void removerIni(ListaSimplesEnc *pList)
 	}
 }
 
-/* Comentario: Remover um Elemento Especifico da Lista */
-void removerEle(ListaSimplesEnc *pList, int v)
+// Remover um Elemento Especifico da Lista
+void removerEle(ListaSimplesmenteEncadeada *pList, int v)
 {
 	Nodo *pAtu, *pAnt;
 	pAnt = NULL;
@@ -106,25 +106,23 @@ void removerEle(ListaSimplesEnc *pList, int v)
 	}
 }
 
-/* Comentario: Remover Todos os Elementos da Lista */
-/* Tarefa */
-void removerTudo(ListaSimplesEnc *pList)
+// Remover Todos os Elementos da Lista
+void removerTudo(ListaSimplesmenteEncadeada *pList)
 {
-	Nodo *p;
-	p = pList->prim;
+	Nodo *ponteiro;
+	ponteiro = pList->prim;
 
-	while (p != NULL)
+	while (ponteiro != NULL)
 	{
 
-		free(p);
-		p = p->prox;
-		pList->prim = p;
+		free(ponteiro);
+		ponteiro = ponteiro->prox;
+		pList->prim = ponteiro;
 	}
 }
 
-/* Comentario: Alterar Elemento da Lista */
-/* Tarefa */
-void alterarEle(ListaSimplesEnc *pList, int v1, int v2)
+// Alterar Elemento da Lista
+void alterarEle(ListaSimplesmenteEncadeada *pList, int v1, int v2)
 {
 
 	Nodo *pAtu;
@@ -143,40 +141,48 @@ void alterarEle(ListaSimplesEnc *pList, int v1, int v2)
 	}
 }
 
-/* Comentario: Lista Vazia */
-int estaVazia(ListaSimplesEnc *pList)
+// Lista Vazia
+int imprimirListaVazia(ListaSimplesmenteEncadeada *pList)
 {
 	return (pList->prim == NULL);
 }
 
-/* Comentario: Programa Principal */
-main()
+// Programa Principal
+int main()
 {
 	setlocale(LC_ALL, "portuguese");
-	ListaSimplesEnc minhaLista;
-	int valor, op, valorAlt;
+
+	ListaSimplesmenteEncadeada minhaLista;
+
+	int valor, opcaoEscolhida, valorAlt;
+
 	criarLista(&minhaLista);
-	printf("Escolha uma opção:\n");
+
 	while (1)
 	{
-		printf("\n(1) Inserir elemento no início da Lista\n");
-		printf("(2) Remover elemento no início da Lista\n");
-		printf("(3) Remover elemento específico da Lista\n");
+		
+		printf("\n(1) Inserir elemento no inicio da Lista\n");
+		printf("(2) Remover elemento no inicio da Lista\n");
+		printf("(3) Remover elemento especifico da Lista\n");
 		printf("(4) Mostrar Lista\n");
 		printf("(5) Apagar todos os elementos da Lista\n");
 		printf("(6) Alterar elemento da Lista\n");
 		printf("(0) Sair\n");
-		printf(" ? ");
-		scanf("%d", &op);
+
+		printf("Escolha uma das opcoes: ");
+		scanf("%d", &opcaoEscolhida);
+
 		system("cls");
-		switch (op)
+		switch (opcaoEscolhida)
 		{
-		case 1: // inserir elemento no inicio
+			// inserir elemento no inicio
+		case 1:
 			printf("Valor? ");
 			scanf("%d", &valor);
-			inserirIni(&minhaLista, valor);
+			inserirNoInicioDaLista(&minhaLista, valor);
 			break;
-		case 2: // remover o primeiro
+			// remover o primeiro
+		case 2:
 			removerIni(&minhaLista);
 			break;
 		case 3: // remover determinado elemento
@@ -185,30 +191,33 @@ main()
 			removerEle(&minhaLista, valor);
 			break;
 		case 4: // mostrar lista
-			if (estaVazia(&minhaLista))
+			if (imprimirListaVazia(&minhaLista))
 			{
 				printf("Lista vazia\n");
 			}
 			else
 			{
-				mostrarLista(&minhaLista);
+				imprimirListasSalvas(&minhaLista);
 			}
 			break;
-		case 5: // apagar todos os elementos da Lista
+		// apaga todos os elementos da Lista
+		case 5:
 			removerTudo(&minhaLista);
 			break;
-		case 6: // alterar um elemento
+		// altera o elemento escolhido pelo usuario
+		case 6:
 			printf("Valor a ser alterado? ");
 			scanf("%d", &valor);
 			printf("Novo valor? ");
 			scanf("%d", &valorAlt);
 			alterarEle(&minhaLista, valor, valorAlt);
 			break;
-		case 0: // abandonar o programa
+		// apaga todas as listas salvas
+		case 0:
 			removerTudo(&minhaLista);
 			exit(0);
 		default:
-			printf("Opção inexistente!\n");
+			printf("Opcao inexistente!\n");
 		}
 	}
 }
