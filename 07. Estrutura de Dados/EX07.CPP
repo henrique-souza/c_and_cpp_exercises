@@ -7,7 +7,7 @@ Estudar.
 #include <stdlib.h>
 #include <ctype.h>
 
-main()
+int main()
 {
 
   struct veiculo
