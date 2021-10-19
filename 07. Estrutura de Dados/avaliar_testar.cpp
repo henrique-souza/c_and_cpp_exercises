@@ -2,32 +2,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+
 // Declaracao da Estrutura Nodo
 typedef struct sNodo
 {
 	int info;
-	struct sNodo *prox;
+	struct sNodo *proximoPonteiro;
 } Nodo;
 
 // Declaracao da Estrutura Lista Simplesmente Encadeada
 typedef struct sListaSimplesEnc
 {
-	Nodo *prim;
+	Nodo *primeiroPonteiro;
 
 } ListaSimplesmenteEncadeada;
 
 // Criar Lista Vazia
-void criarLista(ListaSimplesmenteEncadeada *pList)
+void criarLista(ListaSimplesmenteEncadeada *apontandoLista)
 {
-	pList->prim = NULL;
+	apontandoLista->primeiroPonteiro = NULL;
 }
 
 // Mostrar Elementos da Lista
-void imprimirListasSalvas(ListaSimplesmenteEncadeada *pList)
+void imprimirListasSalvas(ListaSimplesmenteEncadeada *apontandoLista)
 {
 	Nodo *ponteiro;
 	printf("Lista: ");
-	for (ponteiro = pList->prim; ponteiro != NULL; ponteiro = ponteiro->prox)
+	for (ponteiro = apontandoLista->primeiroPonteiro; ponteiro != NULL; ponteiro = ponteiro->proximoPonteiro)
 	{
 		printf("%d -> ", ponteiro->info);
 	}
@@ -35,15 +36,15 @@ void imprimirListasSalvas(ListaSimplesmenteEncadeada *pList)
 }
 
 // Inserir no Inicio da Lista
-void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *pList, int v)
+void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *apontandoLista, int valorArmazenado)
 {
-	Nodo *novo;
-	novo = (Nodo *)malloc(sizeof(Nodo));
-	if (novo != NULL)
+	Nodo *novoElemento;
+	novoElemento = (Nodo *)malloc(sizeof(Nodo));
+	if (novoElemento != NULL)
 	{
-		novo->info = v;
-		novo->prox = pList->prim;
-		pList->prim = novo;
+		novoElemento->info = valorArmazenado;
+		novoElemento->proximoPonteiro = apontandoLista->primeiroPonteiro;
+		apontandoLista->primeiroPonteiro = novoElemento;
 	}
 	else
 	{
@@ -52,13 +53,13 @@ void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *pList, int v)
 }
 
 // Remover no Inicio da Lista
-void removerIni(ListaSimplesmenteEncadeada *pList)
+void removerIni(ListaSimplesmenteEncadeada *apontandoLista)
 {
-	Nodo *pAux = pList->prim;
-	if (pAux != NULL)
+	Nodo *ponteiroAuxiliar = apontandoLista->primeiroPonteiro;
+	if (ponteiroAuxiliar != NULL)
 	{
-		pList->prim = pList->prim->prox;
-		free(pAux);
+		apontandoLista->primeiroPonteiro = apontandoLista->primeiroPonteiro->proximoPonteiro;
+		free(ponteiroAuxiliar);
 		printf("Valor Removido\n");
 	}
 	else
@@ -68,22 +69,22 @@ void removerIni(ListaSimplesmenteEncadeada *pList)
 }
 
 // Remover um Elemento Especifico da Lista
-void removerEle(ListaSimplesmenteEncadeada *pList, int v)
+void removerEle(ListaSimplesmenteEncadeada *apontandoLista, int valorArmazenado)
 {
-	Nodo *pAtu, *pAnt;
-	pAnt = NULL;
-	pAtu = pList->prim;
-	while (pAtu != NULL && pAtu->info != v)
+	Nodo *ponteiroAtual, *ponteiroAnterior;
+	ponteiroAnterior = NULL;
+	ponteiroAtual = apontandoLista->primeiroPonteiro;
+	while (ponteiroAtual != NULL && ponteiroAtual->info != valorArmazenado)
 	{
-		pAnt = pAtu;
-		pAtu = pAtu->prox;
+		ponteiroAnterior = ponteiroAtual;
+		ponteiroAtual = ponteiroAtual->proximoPonteiro;
 	}
-	if (pAnt != NULL)
+	if (ponteiroAnterior != NULL)
 	{
-		if (pAtu != NULL)
+		if (ponteiroAtual != NULL)
 		{
-			pAnt->prox = pAtu->prox;
-			free(pAtu);
+			ponteiroAnterior->proximoPonteiro = ponteiroAtual->proximoPonteiro;
+			free(ponteiroAtual);
 			printf("Valor Removido1\n");
 		}
 		else
@@ -93,10 +94,10 @@ void removerEle(ListaSimplesmenteEncadeada *pList, int v)
 	}
 	else
 	{
-		if (pAtu != NULL && pAtu->info == v)
+		if (ponteiroAtual != NULL && ponteiroAtual->info == valorArmazenado)
 		{
-			pList->prim = pAtu->prox;
-			free(pAtu);
+			apontandoLista->primeiroPonteiro = ponteiroAtual->proximoPonteiro;
+			free(ponteiroAtual);
 			printf("Valor Removido2\n");
 		}
 		else
@@ -107,44 +108,44 @@ void removerEle(ListaSimplesmenteEncadeada *pList, int v)
 }
 
 // Remover Todos os Elementos da Lista
-void removerTudo(ListaSimplesmenteEncadeada *pList)
+void removerTudo(ListaSimplesmenteEncadeada *apontandoLista)
 {
 	Nodo *ponteiro;
-	ponteiro = pList->prim;
+	ponteiro = apontandoLista->primeiroPonteiro;
 
 	while (ponteiro != NULL)
 	{
 
 		free(ponteiro);
-		ponteiro = ponteiro->prox;
-		pList->prim = ponteiro;
+		ponteiro = ponteiro->proximoPonteiro;
+		apontandoLista->primeiroPonteiro = ponteiro;
 	}
 }
 
 // Alterar Elemento da Lista
-void alterarEle(ListaSimplesmenteEncadeada *pList, int v1, int v2)
+void alterarEle(ListaSimplesmenteEncadeada *apontandoLista, int valor1, int valor2)
 {
 
-	Nodo *pAtu;
+	Nodo *ponteiroAtual;
 
-	pAtu = pList->prim;
-	while (pAtu != NULL)
+	ponteiroAtual = apontandoLista->primeiroPonteiro;
+	while (ponteiroAtual != NULL)
 	{
 
-		if (pAtu->info == v1)
+		if (ponteiroAtual->info == valor1)
 		{
 
-			pAtu->info = v2;
+			ponteiroAtual->info = valor2;
 		}
 
-		pAtu = pAtu->prox;
+		ponteiroAtual = ponteiroAtual->proximoPonteiro;
 	}
 }
 
 // Lista Vazia
-int imprimirListaVazia(ListaSimplesmenteEncadeada *pList)
+int imprimirListaVazia(ListaSimplesmenteEncadeada *apontandoLista)
 {
-	return (pList->prim == NULL);
+	return (apontandoLista->primeiroPonteiro == NULL);
 }
 
 // Programa Principal
@@ -154,7 +155,7 @@ int main()
 
 	ListaSimplesmenteEncadeada minhaLista;
 
-	int valor, opcaoEscolhida, valorAlt;
+	int valorArmazenado, opcaoEscolhida, valorAlterado;
 
 	criarLista(&minhaLista);
 
@@ -178,8 +179,8 @@ int main()
 			// inserir elemento no inicio
 		case 1:
 			printf("Valor? ");
-			scanf("%d", &valor);
-			inserirNoInicioDaLista(&minhaLista, valor);
+			scanf("%d", &valorArmazenado);
+			inserirNoInicioDaLista(&minhaLista, valorArmazenado);
 			break;
 			// remover o primeiro
 		case 2:
@@ -187,8 +188,8 @@ int main()
 			break;
 		case 3: // remover determinado elemento
 			printf("Valor? ");
-			scanf("%d", &valor);
-			removerEle(&minhaLista, valor);
+			scanf("%d", &valorArmazenado);
+			removerEle(&minhaLista, valorArmazenado);
 			break;
 		case 4: // mostrar lista
 			if (imprimirListaVazia(&minhaLista))
@@ -207,10 +208,10 @@ int main()
 		// altera o elemento escolhido pelo usuario
 		case 6:
 			printf("Valor a ser alterado? ");
-			scanf("%d", &valor);
-			printf("Novo valor? ");
-			scanf("%d", &valorAlt);
-			alterarEle(&minhaLista, valor, valorAlt);
+			scanf("%d", &valorArmazenado);
+			printf("Novo valorArmazenado? ");
+			scanf("%d", &valorAlterado);
+			alterarEle(&minhaLista, valorArmazenado, valorAlterado);
 			break;
 		// apaga todas as listas salvas
 		case 0:
