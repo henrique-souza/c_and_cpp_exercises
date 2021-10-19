@@ -6,7 +6,7 @@
 // Declaracao da Estrutura Nodo
 typedef struct sNodo
 {
-	int info;
+	int ponteiroInformado;
 	struct sNodo *proximoPonteiro;
 } Nodo;
 
@@ -30,7 +30,7 @@ void imprimirListasSalvas(ListaSimplesmenteEncadeada *apontandoLista)
 	printf("Lista: ");
 	for (ponteiro = apontandoLista->primeiroPonteiro; ponteiro != NULL; ponteiro = ponteiro->proximoPonteiro)
 	{
-		printf("%d -> ", ponteiro->info);
+		printf("%d -> ", ponteiro->ponteiroInformado);
 	}
 	printf("NULL\n");
 }
@@ -42,7 +42,7 @@ void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *apontandoLista, int valo
 	novoElemento = (Nodo *)malloc(sizeof(Nodo));
 	if (novoElemento != NULL)
 	{
-		novoElemento->info = valorArmazenado;
+		novoElemento->ponteiroInformado = valorArmazenado;
 		novoElemento->proximoPonteiro = apontandoLista->primeiroPonteiro;
 		apontandoLista->primeiroPonteiro = novoElemento;
 	}
@@ -74,7 +74,7 @@ void removerEle(ListaSimplesmenteEncadeada *apontandoLista, int valorArmazenado)
 	Nodo *ponteiroAtual, *ponteiroAnterior;
 	ponteiroAnterior = NULL;
 	ponteiroAtual = apontandoLista->primeiroPonteiro;
-	while (ponteiroAtual != NULL && ponteiroAtual->info != valorArmazenado)
+	while (ponteiroAtual != NULL && ponteiroAtual->ponteiroInformado != valorArmazenado)
 	{
 		ponteiroAnterior = ponteiroAtual;
 		ponteiroAtual = ponteiroAtual->proximoPonteiro;
@@ -94,7 +94,7 @@ void removerEle(ListaSimplesmenteEncadeada *apontandoLista, int valorArmazenado)
 	}
 	else
 	{
-		if (ponteiroAtual != NULL && ponteiroAtual->info == valorArmazenado)
+		if (ponteiroAtual != NULL && ponteiroAtual->ponteiroInformado == valorArmazenado)
 		{
 			apontandoLista->primeiroPonteiro = ponteiroAtual->proximoPonteiro;
 			free(ponteiroAtual);
@@ -132,10 +132,10 @@ void alterarEle(ListaSimplesmenteEncadeada *apontandoLista, int valor1, int valo
 	while (ponteiroAtual != NULL)
 	{
 
-		if (ponteiroAtual->info == valor1)
+		if (ponteiroAtual->ponteiroInformado == valor1)
 		{
 
-			ponteiroAtual->info = valor2;
+			ponteiroAtual->ponteiroInformado = valor2;
 		}
 
 		ponteiroAtual = ponteiroAtual->proximoPonteiro;
@@ -176,22 +176,24 @@ int main()
 		system("cls");
 		switch (opcaoEscolhida)
 		{
-			// inserir elemento no inicio
+		// inserir elemento no inicio	
 		case 1:
 			printf("Valor? ");
 			scanf("%d", &valorArmazenado);
 			inserirNoInicioDaLista(&minhaLista, valorArmazenado);
 			break;
-			// remover o primeiro
+		// remover o primeiro
 		case 2:
 			removerIni(&minhaLista);
 			break;
-		case 3: // remover determinado elemento
+		// remover determinado elemento
+		case 3: 
 			printf("Valor? ");
 			scanf("%d", &valorArmazenado);
 			removerEle(&minhaLista, valorArmazenado);
 			break;
-		case 4: // mostrar lista
+		// mostrar lista
+		case 4: 
 			if (imprimirListaVazia(&minhaLista))
 			{
 				printf("Lista vazia\n");
