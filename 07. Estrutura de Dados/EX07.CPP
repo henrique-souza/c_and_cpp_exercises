@@ -1,3 +1,8 @@
+/*
+Estrutura de Dados - Fila
+Aula 19/10
+Estudar. 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>

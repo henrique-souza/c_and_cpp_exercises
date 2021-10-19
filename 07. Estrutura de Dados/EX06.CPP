@@ -1,3 +1,8 @@
+/*
+Estrutura de Dados - Pilha
+Aula 19/10
+Estudar. 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -80,11 +85,10 @@ void Menu()
            "? ");
 }
 
-main()
+int main()
 {
     Item *topo = NULL;
-    int opcao;
-    int numero;
+    int opcao, numero;
     Menu();
     scanf("%i", &opcao);
     while (opcao != 3)
