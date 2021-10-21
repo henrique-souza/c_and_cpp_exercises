@@ -1,3 +1,4 @@
+// estudar
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -13,18 +14,18 @@ int main()
         veiculoCadastrado *veiculoAnterior;
     };
 
-    veiculoCadastrado *primeiroVeiculoCadastrado = NULL, *veiculoAnterior, \
-    *veiculoAtual, *ultimoVeiculoCadastrado = NULL;
-    char opcaoEscolhida;
+    veiculoCadastrado *primeiroVeiculoCadastrado = NULL, *veiculoAnterior, *veiculoAtual, *ultimoVeiculoCadastrado = NULL;
 
-    primeiroVeiculoCadastrado = NULL;
+     char opcaoEscolhida;
+
+    // primeiroVeiculoCadastrado = NULL; 
 
     do
     {
         veiculoAtual = (veiculoCadastrado *)malloc(sizeof(veiculoCadastrado));
-        veiculoAtual -> veiculoPosterior = NULL; 
+        veiculoAtual->veiculoPosterior = NULL;
         // usamos ' -> ' para acessar um membro (uma variavel neste caso) da struct
-        veiculoAtual -> veiculoAnterior = NULL;
+        veiculoAtual->veiculoAnterior = NULL;
         ultimoVeiculoCadastrado = veiculoAtual;
 
         if (primeiroVeiculoCadastrado == NULL)
@@ -37,15 +38,15 @@ int main()
             veiculoAtual->veiculoAnterior = veiculoAnterior;
         }
 
-        printf("\nPlaca do veiculo.........: ");
-        scanf("%s", &veiculoAtual -> placaCadastrada);
-        printf("\nAno do veiculo...........: ");
-        scanf("%d", &veiculoAtual -> anoCadastrado);
+        printf("\nPlaca do veiculo: ");
+        scanf("%s", &veiculoAtual->placaCadastrada);
+        printf("\nAno do veiculo: ");
+        scanf("%d", &veiculoAtual->anoCadastrado);
 
         veiculoAnterior = veiculoAtual;
 
         printf("Deseja Continuar <s/n > ? ");
-        
+
         do
         {
             scanf("%c", &opcaoEscolhida);
@@ -58,19 +59,19 @@ int main()
 
     while (veiculoAtual != NULL)
     {
-        printf("\nPlaca: %s \n", veiculoAtual -> placaCadastrada);
-        printf("Ano  : %d \n", veiculoAtual -> anoCadastrado);
+        printf("\nPlaca: %s \n", veiculoAtual->placaCadastrada);
+        printf("Ano  : %d \n", veiculoAtual->anoCadastrado);
 
-        veiculoAtual = veiculoAtual -> veiculoPosterior;
+        veiculoAtual = veiculoAtual->veiculoPosterior;
     }
 
     veiculoAtual = ultimoVeiculoCadastrado;
 
     while (veiculoAtual != NULL)
     {
-        printf("\nPlaca: %s \n", veiculoAtual -> placaCadastrada);
-        printf("Ano  : %d \n", veiculoAtual -> anoCadastrado);
+        printf("\nPlaca: %s \n", veiculoAtual->placaCadastrada);
+        printf("Ano: %d \n", veiculoAtual->anoCadastrado);
 
-        veiculoAtual = veiculoAtual -> veiculoAnterior;
+        veiculoAtual = veiculoAtual->veiculoAnterior;
     }
 }
