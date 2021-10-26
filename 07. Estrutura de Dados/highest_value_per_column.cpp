@@ -3,7 +3,7 @@
 */
 #include <stdio.h>
 
-main()
+int main()
 {
 	int matriz[2][3], linha, coluna, valorMaiorPorColuna;
 
