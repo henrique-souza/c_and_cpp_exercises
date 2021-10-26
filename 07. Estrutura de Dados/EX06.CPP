@@ -89,8 +89,10 @@ int main()
 {
     Item *topo = NULL;
     int opcao, numero;
+    
     Menu();
     scanf("%i", &opcao);
+
     while (opcao != 3)
     {
         switch (opcao)
