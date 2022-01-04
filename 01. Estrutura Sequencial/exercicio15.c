@@ -19,6 +19,7 @@ FIM
 int main()
 {
    float salarioAtual, conta1, conta2, multa, restanteDoSalario;
+
    printf("Quanto é seu salário no momento? ");
    scanf("%f", &salarioAtual);
    printf("Qual o valor da primeira conta a pagar? ");
@@ -27,9 +28,11 @@ int main()
    scanf("%f", &conta2);
    printf("Qual o valor da multa cobrada? ");
    scanf("%f", &multa);
+
    salarioAtual = salarioAtual - conta1 - (multa * 100 / 100);
    conta2 = salarioAtual - conta2 - (multa * 100 / 100);
    restanteDoSalario = conta2;
+   
    printf("\nCom todas constas pagas, aplicando as multas em cada, restou %.0f reais de seu salário.", restanteDoSalario);
    return 0;
 }

@@ -14,11 +14,14 @@ FIM
 int main()
 {
     float diagonalMaior, diagonalMenor, areadoLosango;
+
     printf("Qual valor da Diagonal Maior? ");
     scanf("%f", &diagonalMaior);
     printf("Qual valor da Diagonal Menor? ");
     scanf("%f", &diagonalMenor);
+
     areadoLosango = (diagonalMaior * diagonalMenor) / 2;
+    
     printf("\nQual a Área do Losango? %.2f", areadoLosango);
     return 0;
 }

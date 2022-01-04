@@ -21,13 +21,16 @@ FIM
 int main()
 {
     float numeroUm, numeroDois, numeroTres, multiplicacao;
+
     printf("Valor do Primeiro Numero: ");
     scanf("%f", &numeroUm);
     printf("Valor do Segundo Numero: ");
     scanf("%f", &numeroDois);
     printf("Valor do Terceiro Numero: ");
     scanf("%f", &numeroTres);
+
     multiplicacao = numeroUm * numeroDois * numeroTres;
+    
     printf("\nResultado da Multiplicacao = %.2f", multiplicacao);
     return 0;
 }

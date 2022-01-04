@@ -17,12 +17,15 @@ FIM
 int main()
 {
     int catetoOposto, catetoAdjacente, calculoDosCatetos, hipotenusa;
+
     printf("Qual o valor do cateto oposto? ");
     scanf("%d", &catetoOposto);
     printf("Qual o valor do cateto adjacente? ");
     scanf("%d", &catetoAdjacente);
+
     calculoDosCatetos = pow(catetoOposto, 2) + pow(catetoAdjacente, 2);
     hipotenusa = sqrt(calculoDosCatetos);
+    
     printf("O valor da hipotenusa e de %d", hipotenusa);
     return 0;
 }

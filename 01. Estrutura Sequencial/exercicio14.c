@@ -19,14 +19,17 @@ FIM
 int main()
 {
    float anoDeNascimento, anoAtual, idadeEmAnos, idadeEmMeses, idadeEmDias, idadeEmSemanas;
+
    printf("Qual seu ano de nascimento? ");
    scanf("%f", &anoDeNascimento);
    printf("Em que ano estamos? ");
    scanf("%f", &anoAtual);
+
    idadeEmAnos = anoAtual - anoDeNascimento;
    idadeEmMeses = idadeEmAnos / 12;
    idadeEmDias = 365 / idadeEmAnos;
    idadeEmSemanas = 52 / idadeEmAnos;
+   
    printf("\nVocê tem %.0f anos atualmente.", idadeEmAnos);
    printf("\nTem %.3f dias de vida.", idadeEmDias);
    printf("\nTem %.3f semanas de vida.", idadeEmSemanas);

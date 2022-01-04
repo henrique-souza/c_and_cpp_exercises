@@ -19,11 +19,14 @@ FIM
 int main()
 {
     float numeroUm, numeroDois, divisao;
+
     printf("Valor do Primeiro Número: ");
     scanf("%f", &numeroUm);
     printf("Valor do Segundo Número: ");
     scanf("%f", &numeroDois);
+
     divisao = numeroUm / numeroDois;
+    
     printf("\nResultado da Divisão = %.2f", divisao);
     return 0;
 }

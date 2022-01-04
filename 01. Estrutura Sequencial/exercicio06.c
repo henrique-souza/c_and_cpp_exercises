@@ -15,12 +15,15 @@ FIM
 int main()
 {
     float salarioFixo, valorDevendas, comissao = 0.04, salarioFinal;
+
     printf("Valor do Salário Fixo: ");
     scanf("%f", &salarioFixo);
     printf("Valor das Vendas: ");
     scanf("%f", &valorDevendas);
+
     comissao = valorDevendas * comissao;
     salarioFinal = salarioFixo + comissao;
+    
     printf("\nResultado do Salário com Comissão = %.2f", salarioFinal);
     return 0;
 }

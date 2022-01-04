@@ -14,11 +14,14 @@ FIM
 int main()
 {
    float quantidadeSalarios, salarioFuncionario, salarioMinimoAtual;
+
    printf("Qual valor do Salario do Funcionario? ");
    scanf("%f", &salarioFuncionario);
    printf("Qual valor do Salario Minimo atual? ");
    scanf("%f", &salarioMinimoAtual);
+
    quantidadeSalarios = salarioFuncionario / salarioMinimoAtual;
+   
    printf("\nEste funcionário ganha, aproximadamente, %.1f salários minimos", quantidadeSalarios);
    return 0;
 }

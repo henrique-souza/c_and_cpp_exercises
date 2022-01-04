@@ -20,8 +20,10 @@ escreva numus*10
 int main()
 {
     float numeroDigitado;
+    
     printf("Qual numero voce deseja que seja feita a Tabuada?  ");
     scanf("%f", &numeroDigitado);
+
     printf("\nA tabuada do numero %.0f esta abaixo", numeroDigitado);
     printf("\n\n%.0fx0 = %.0f", numeroDigitado, numeroDigitado * 0);
     printf("\n%.0fx1 = %.0f", numeroDigitado, numeroDigitado * 1);

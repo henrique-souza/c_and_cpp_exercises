@@ -14,10 +14,13 @@ FIM
 int main()
 {
     float peso, novoPesoEngordando, novoPesoEmagrecendo;
+
     printf("Qual o peso da pessoa? ");
     scanf("%f", &peso);
+
     novoPesoEngordando = peso + (peso * 0.15);
     novoPesoEmagrecendo = peso - (peso * 0.20);
+    
     printf("\nResultado do novo Peso Engordando = %.2f", novoPesoEngordando);
     printf("\nResultado do novo Peso Emagrecendo = %.2f", novoPesoEmagrecendo);
     return 0;

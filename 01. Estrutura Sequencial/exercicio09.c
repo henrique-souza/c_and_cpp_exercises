@@ -22,14 +22,18 @@ FIM
 int main()
 {
     float areaDoTrapezio, baseMaior, baseMenor, altura;
+
     printf("Valor da Base Maior: ");
     scanf("%f", &baseMaior);
     printf("Valor da Base Menor: ");
     scanf("%f", &baseMenor);
     printf("Valor da Altura: ");
     scanf("%f", &altura);
+
     areaDoTrapezio = ((baseMaior + baseMenor) * altura) / 2;
+
     printf("\nResultados abaixo:\n");
+    
     printf("\nArea do Trapezio = %.2f", areaDoTrapezio);
     return 0;
 }

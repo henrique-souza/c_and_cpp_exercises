@@ -12,9 +12,12 @@ O peso convertido para Gramas é pesog
 int main()
 {
     float pesoEmKilos, pesoEmGramas;
+
     printf("Qual o peso (em KG) a ser convertido?  ");
     scanf("%f", &pesoEmKilos);
+
     pesoEmGramas = pesoEmKilos * 1.000;
+    
     printf("\n\nO peso convertido em gramas sera de: %-5.3f", pesoEmGramas);
     return 0;
 }

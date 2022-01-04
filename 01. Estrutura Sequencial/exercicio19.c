@@ -8,13 +8,17 @@
 int main()
 {
     int larguraDoComodo, comprimentoDoComodo, dimensaoDoComodo, potenciaEmWatt;
+
     printf("\nQual a largura do comodo? ");
     scanf("%d", &larguraDoComodo);
+
     printf("\nQual o comprimento do comodo? ");
     scanf("%d", &comprimentoDoComodo);
+
     dimensaoDoComodo = larguraDoComodo * comprimentoDoComodo;
     potenciaEmWatt = dimensaoDoComodo / 18;
+
     printf("\nO comprimento do comodo e de: %d metros quadrados.", dimensaoDoComodo);
-    printf("\nA potencia que dever usada no comodo e de %d W para que haja iluminacao adequada", potenciaEmWatt);
+    printf("\n\nA potencia que dever usada no comodo e de %d W para que haja iluminacao adequada", potenciaEmWatt);
     return 0;
 }
