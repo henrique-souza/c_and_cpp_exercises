@@ -4,8 +4,10 @@
 int main()
 {
     float sal, aumento = 0;
+
     printf("Salario..: ");
     scanf("%f", &sal);
+
     if (sal <= 2000)
     {
         aumento = sal * 18 / 100;
@@ -22,7 +24,9 @@ int main()
     {
         aumento = sal * 7 / 100;
     }
+
     printf("Valor do Aumento..: %.2f \n\n", aumento);
+    
     system("pause");
     return 0;
 }

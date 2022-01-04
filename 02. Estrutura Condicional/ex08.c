@@ -8,8 +8,10 @@ se sal acima de 300,00 = aumento de 15%
 int main()
 {
     float sal;
+
     printf("Qual seu salario atual?  ");
     scanf("%f", &sal);
+
     if (sal <= 300)
     {
         printf("Voce recebera um aumento. Seu salario sera de %.2f reais a partir deste mes.", sal + (sal * 35) / 100);

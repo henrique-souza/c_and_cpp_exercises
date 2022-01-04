@@ -9,8 +9,10 @@ ou enviar uma mensagem aos que não se enquadram nas regras
 int main()
 {
     float sal;
+
     printf("\nDigite seu salario atualmente: ");
     scanf("%f", &sal);
+    
     if (sal <= 500.00)
     {
         printf("\nVoce recebera um reajuste. Seu salario sera de: %.2f", sal + sal * 30 / 100);

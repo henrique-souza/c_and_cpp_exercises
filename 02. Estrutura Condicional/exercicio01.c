@@ -6,7 +6,9 @@ usar média 7 para considerar aprovação*/
 int main()
 {
     setlocale(LC_ALL, "Portuguese");
+
     float nota1, nota2, nota3, nota4, media, mediaAritmetica;
+
     printf("\nSua nota da AV1:  ");
     scanf("%f", &nota1);
     printf("\nSua nota da AV2:  ");
@@ -15,8 +17,10 @@ int main()
     scanf("%f", &nota3);
     printf("\nSua nota da AV4:  ");
     scanf("%f", &nota4);
+
     media = nota1 + nota2 + nota3 + nota4;
     mediaAritmetica = media / 4;
+    
     if (mediaAritmetica >= 7)
     {
         printf("\nVoce foi aprovado com media %.2f\n", mediaAritmetica);

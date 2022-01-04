@@ -13,6 +13,7 @@ int main()
     scanf("%f", &nota1);
     printf("\nValor da segunda nota: ");
     scanf("%f", &nota2);
+    
     media = nota1 + nota2;
     mediaAritmetica = media / 2;
 

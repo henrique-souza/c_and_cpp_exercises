@@ -30,6 +30,7 @@ FIM
 int main()
 {
     float notaRec, medFinal, nota1, nota2, nota3, nota4, media;
+
     printf("Nota 1..: ");
     scanf("%f", &nota1);
     printf("Nota 2..: ");
@@ -38,7 +39,9 @@ int main()
     scanf("%f", &nota3);
     printf("Nota 4..: ");
     scanf("%f", &nota4);
+
     media = (nota1 + nota2 + nota3 + nota4) / 4;
+
     printf("\nMedia Final..: %.2f\n", media);
 
     if (media < 7)
@@ -46,7 +49,9 @@ int main()
         printf("Voce ficou em RECUPERACAO!!\n");
         printf("Nota Recuperacao..: ");
         scanf("%f", &notaRec);
+
         medFinal = (media + notaRec) / 2;
+        
         printf("Media Final..: %.2f\n", medFinal);
 
         if (medFinal < 5)

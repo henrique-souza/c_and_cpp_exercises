@@ -1,8 +1,9 @@
 #include <stdio.h>
+
 int main()
 {
     float saldo_medio, valor_medio;
-    
+
     printf("\nDigite seu saldo medio do ano anterior:  ");
     scanf("%f", &saldo_medio);
 
@@ -22,8 +23,10 @@ int main()
     {
         valor_medio = saldo_medio * 0.30;
     }
-    printf("Seu saldo medio anual: %.2f \t\tSeu valor de credito: %.2f ", saldo_medio, valor_medio);
+
     //o primeiro %.2f é em referência ao saldo médio, o segundo a valor médio
+    printf("Seu saldo medio anual: %.2f \t\tSeu valor de credito: %.2f ", saldo_medio, valor_medio);
+
     system("pause");
     return 0;
 }

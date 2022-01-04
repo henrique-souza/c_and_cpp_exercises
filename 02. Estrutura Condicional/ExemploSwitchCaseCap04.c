@@ -5,8 +5,10 @@
 int main()
 {
     int nr;
+    
     printf("Nr do mes..: ");
     scanf("%d", &nr);
+
     switch (nr)
     {
     case 1:
