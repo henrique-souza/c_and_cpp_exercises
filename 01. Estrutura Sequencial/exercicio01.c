@@ -24,7 +24,7 @@ int main()
 
    // operacao
    subtracao = numeroUm - numeroDois;
-   
+
    // imprimindo resultado
    printf("\nResultado da Subtracao = %.0f", subtracao);
    return 0;

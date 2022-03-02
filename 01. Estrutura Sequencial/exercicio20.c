@@ -1,6 +1,6 @@
 /*pagina 30 e 51
 objetivo: fazer um programa que receba a medida do angulo formado
-por uma escada apoiada no chC#o e a distancia que a escada 
+por uma escada apoiada no chao e a distancia que a escada 
 estC! da parede. Calcular e mostrar a medida da escada para que 
 possa alcancar a ponta da parede
 */
@@ -18,6 +18,6 @@ int main()
     scanf("%f", &distancia);
 
     printf("Angulo: %d graus.", angulo);
-    printf("\nDistancia: %f graus.", distancia);
+    printf("\nDistancia: %.2f graus.", distancia);
     return 0;
 }
