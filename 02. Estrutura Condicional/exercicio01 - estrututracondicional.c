@@ -30,7 +30,7 @@ int main()
     medFinal = (media + notaRec) / 2;
 
     printf("Média Final:   %.2f\n", medFinal);
-    
+
     if (medFinal < 5) //quer dizer 'se a médiaFinal for menor que cinco'
     {
       printf("Você está Reprovado!\n\n");
