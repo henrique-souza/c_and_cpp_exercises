@@ -30,10 +30,16 @@ int main()
     scanf("%f%*c", &horasExtrasTrabalhadas);
 
     valorDaHoraTrabalhada = salarioMinimo / 8;
+    printf("\n\t\tValores");
+    printf("\nValor da hora trabalhada: R$ %.2f", valorDaHoraTrabalhada);
+
     valordaHoraExtra = salarioMinimo / 4;
+
+    printf("\nValor da hora extra: R$ %.2f", valordaHoraExtra);
 
     salarioBruto = horasTrabalhadas * valorDaHoraTrabalhada;
 
+    printf("\n\n\t\tCalculos");
     printf("\nCaculo do Salario Bruto: R$ %.2f", salarioBruto);
 
     quantiaAReceber = horasExtrasTrabalhadas * valordaHoraExtra;
@@ -42,7 +48,8 @@ int main()
 
     salarioAReceber = salarioBruto + quantiaAReceber;
 
-    printf("\nCalculo total do salario a receber: R$ %.2f", salarioAReceber);
+    printf("\n\n\t\tResultado");
+    printf("\nSalario total a receber: R$ %.2f", salarioAReceber);
 
     return 0;
 }
