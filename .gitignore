@@ -11,3 +11,7 @@
 05. Matriz/
 06. Funções/
 07. Estrutura de Dados/
+/.idea/
+
+# CMake
+cmake-build-*/
