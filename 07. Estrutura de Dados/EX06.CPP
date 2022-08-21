@@ -14,7 +14,7 @@ struct Item
 
 void Inicializar(Item **topo)
 {
-    *topo = NULL;
+    *topo = nullptr;
 }
 
 bool EstaVazia(Item **topo)

@@ -6,6 +6,7 @@ possa alcancar a ponta da parede
 */
 
 #include <stdio.h>
+#include <math.h>
 
 int main()
 {

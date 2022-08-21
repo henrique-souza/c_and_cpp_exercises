@@ -17,9 +17,9 @@ int main()
    float numeroUm, numeroDois, subtracao;
 
    // entrada de dados
-   printf("Valor do Primeiro Numero: ");
+   printf("Valor do Primeiro Numero:  ");
    scanf("%f", &numeroUm);
-   printf("Valor do Segundo Numero: ");
+   printf("\nValor do Segundo Numero:  ");
    scanf("%f", &numeroDois);
 
    // operacao
