@@ -3,224 +3,224 @@
 #include <stdlib.h>
 #include <locale.h>
 
-// Declaracao da Estrutura Nodo
-typedef struct sNodo
+// Declaracao da Estrutura Celula
+typedef struct celula
 {
-	int ponteiroInformado;
-	struct sNodo *proximoPonteiro;
-} Nodo;
+    int ponteiro;
+    struct celula *proximo_ponteiro;
+} Celula;
 
 // Declaracao da Estrutura Lista Simplesmente Encadeada
-typedef struct sListaSimplesEnc
+typedef struct lista
 {
-	Nodo *primeiroPonteiro;
+    Celula *primeiro_ponteiro;
 
-} ListaSimplesmenteEncadeada;
+} lista_encadeada;
 
 // Criar Lista Vazia
-void criarLista(ListaSimplesmenteEncadeada *apontarListaArmazenada)
+void criar_lista_vazia(lista_encadeada *lista_armazenada)
 {
-	apontarListaArmazenada->primeiroPonteiro = NULL;
+    lista_armazenada->primeiro_ponteiro = NULL;
 }
 
 // Mostrar Elementos da Lista
-void imprimirListasSalvas(ListaSimplesmenteEncadeada *apontarListaArmazenada)
+void imprimir_lista(lista_encadeada *apontarListaArmazenada)
 {
-	Nodo *ponteiro;
-	printf("Lista: ");
-	for (ponteiro = apontarListaArmazenada->primeiroPonteiro; ponteiro != NULL; ponteiro = ponteiro->proximoPonteiro)
-	{
-		printf("%d -> ", ponteiro->ponteiroInformado);
-	}
-	printf("NULL\n");
+    Celula *ponteiro;
+    printf("Lista: ");
+    for (ponteiro = apontarListaArmazenada->primeiro_ponteiro; ponteiro != NULL; ponteiro = ponteiro->proximo_ponteiro)
+    {
+        printf("%d -> ", ponteiro->ponteiro);
+    }
+    printf("NULL\n");
 }
 
 // Inserir no Inicio da Lista
-void inserirNoInicioDaLista(ListaSimplesmenteEncadeada *apontarListaArmazenada, int valorArmazenado)
+void inserir_valor(lista_encadeada *apontarListaArmazenada, int valorArmazenado)
 {
-	Nodo *novoElemento;
-	novoElemento = (Nodo *)malloc(sizeof(Nodo));
-	if (novoElemento != NULL)
-	{
-		novoElemento->ponteiroInformado = valorArmazenado;
-		novoElemento->proximoPonteiro = apontarListaArmazenada->primeiroPonteiro;
-		apontarListaArmazenada->primeiroPonteiro = novoElemento;
-	}
-	else
-	{
-		printf("Memória Insuficiente\n");
-	}
+    Celula *novoElemento;
+    novoElemento = (Celula *)malloc(sizeof(Celula));
+    if (novoElemento != NULL)
+    {
+        novoElemento->ponteiro = valorArmazenado;
+        novoElemento->proximo_ponteiro = apontarListaArmazenada->primeiro_ponteiro;
+        apontarListaArmazenada->primeiro_ponteiro = novoElemento;
+    }
+    else
+    {
+        printf("Memória Insuficiente\n");
+    }
 }
 
 // Remover no Inicio da Lista
-void removerElementoDoInicioDaLista(ListaSimplesmenteEncadeada *apontarListaArmazenada)
+void removerElementoDoInicioDaLista(lista_encadeada *apontarListaArmazenada)
 {
-	Nodo *ponteiroAuxiliar = apontarListaArmazenada->primeiroPonteiro;
-	if (ponteiroAuxiliar != NULL)
-	{
-		apontarListaArmazenada->primeiroPonteiro = apontarListaArmazenada->primeiroPonteiro->proximoPonteiro;
-		free(ponteiroAuxiliar);
-		printf("Valor Removido\n");
-	}
-	else
-	{
-		printf("Lista Vazia\n");
-	}
+    Celula *ponteiroAuxiliar = apontarListaArmazenada->primeiro_ponteiro;
+    if (ponteiroAuxiliar != NULL)
+    {
+        apontarListaArmazenada->primeiro_ponteiro = apontarListaArmazenada->primeiro_ponteiro->proximo_ponteiro;
+        free(ponteiroAuxiliar);
+        printf("Valor Removido\n");
+    }
+    else
+    {
+        printf("Lista Vazia\n");
+    }
 }
 
 // Remover um Elemento Especifico da Lista
-void removerElementoDaLista(ListaSimplesmenteEncadeada *apontarListaArmazenada, int valorArmazenado)
+void remover_elemento_especifico(lista_encadeada *apontarListaArmazenada, int valorArmazenado)
 {
-	Nodo *ponteiroAtual, *ponteiroAnterior;
-	ponteiroAnterior = NULL;
-	ponteiroAtual = apontarListaArmazenada->primeiroPonteiro;
-	while (ponteiroAtual != NULL && ponteiroAtual->ponteiroInformado != valorArmazenado)
-	{
-		ponteiroAnterior = ponteiroAtual;
-		ponteiroAtual = ponteiroAtual->proximoPonteiro;
-	}
-	if (ponteiroAnterior != NULL)
-	{
-		if (ponteiroAtual != NULL)
-		{
-			ponteiroAnterior->proximoPonteiro = ponteiroAtual->proximoPonteiro;
-			free(ponteiroAtual);
-			printf("Valor Removido1\n");
-		}
-		else
-		{
-			printf("Valor não encontrado\n");
-		}
-	}
-	else
-	{
-		if (ponteiroAtual != NULL && ponteiroAtual->ponteiroInformado == valorArmazenado)
-		{
-			apontarListaArmazenada->primeiroPonteiro = ponteiroAtual->proximoPonteiro;
-			free(ponteiroAtual);
-			printf("Valor Removido2\n");
-		}
-		else
-		{
-			printf("Lista Vazia\n");
-		}
-	}
+    Celula *ponteiroAtual, *ponteiroAnterior;
+    ponteiroAnterior = NULL;
+    ponteiroAtual = apontarListaArmazenada->primeiro_ponteiro;
+    while (ponteiroAtual != NULL && ponteiroAtual->ponteiro != valorArmazenado)
+    {
+        ponteiroAnterior = ponteiroAtual;
+        ponteiroAtual = ponteiroAtual->proximo_ponteiro;
+    }
+    if (ponteiroAnterior != NULL)
+    {
+        if (ponteiroAtual != NULL)
+        {
+            ponteiroAnterior->proximo_ponteiro = ponteiroAtual->proximo_ponteiro;
+            free(ponteiroAtual);
+            printf("Valor Removido1\n");
+        }
+        else
+        {
+            printf("Valor não encontrado\n");
+        }
+    }
+    else
+    {
+        if (ponteiroAtual != NULL && ponteiroAtual->ponteiro == valorArmazenado)
+        {
+            apontarListaArmazenada->primeiro_ponteiro = ponteiroAtual->proximo_ponteiro;
+            free(ponteiroAtual);
+            printf("Valor Removido2\n");
+        }
+        else
+        {
+            printf("Lista Vazia\n");
+        }
+    }
 }
 
 // Remover Todos os Elementos da Lista
-void removerTodosElementos(ListaSimplesmenteEncadeada *apontarListaArmazenada)
+void removerTodosElementos(lista_encadeada *apontarListaArmazenada)
 {
-	Nodo *ponteiro;
-	ponteiro = apontarListaArmazenada->primeiroPonteiro;
+    Celula *ponteiro;
+    ponteiro = apontarListaArmazenada->primeiro_ponteiro;
 
-	while (ponteiro != NULL)
-	{
+    while (ponteiro != NULL)
+    {
 
-		free(ponteiro);
-		ponteiro = ponteiro->proximoPonteiro;
-		apontarListaArmazenada->primeiroPonteiro = ponteiro;
-	}
+        free(ponteiro);
+        ponteiro = ponteiro->proximo_ponteiro;
+        apontarListaArmazenada->primeiro_ponteiro = ponteiro;
+    }
 }
 
 // Alterar Elemento da Lista
-void alterarEle(ListaSimplesmenteEncadeada *apontarListaArmazenada, int valor1, int valor2)
+void alterarEle(lista_encadeada *apontarListaArmazenada, int valor1, int valor2)
 {
 
-	Nodo *ponteiroAtual;
+    Celula *ponteiroAtual;
 
-	ponteiroAtual = apontarListaArmazenada->primeiroPonteiro;
-	while (ponteiroAtual != NULL)
-	{
+    ponteiroAtual = apontarListaArmazenada->primeiro_ponteiro;
+    while (ponteiroAtual != NULL)
+    {
 
-		if (ponteiroAtual->ponteiroInformado == valor1)
-		{
+        if (ponteiroAtual->ponteiro == valor1)
+        {
 
-			ponteiroAtual->ponteiroInformado = valor2;
-		}
+            ponteiroAtual->ponteiro = valor2;
+        }
 
-		ponteiroAtual = ponteiroAtual->proximoPonteiro;
-	}
+        ponteiroAtual = ponteiroAtual->proximo_ponteiro;
+    }
 }
 
 // Lista Vazia
-int imprimirListaVazia(ListaSimplesmenteEncadeada *apontarListaArmazenada)
+int imprimir_lista_vazia(lista_encadeada *lista_armazenada)
 {
-	return (apontarListaArmazenada->primeiroPonteiro == NULL);
+    return (lista_armazenada->primeiro_ponteiro == NULL);
 }
 
 // Programa Principal
 int main()
 {
-	setlocale(LC_ALL, "portuguese");
+    setlocale(LC_ALL, "portuguese");
 
-	ListaSimplesmenteEncadeada minhaLista;
+    lista_encadeada minhaLista;
 
-	int valorArmazenado, opcaoEscolhida, valorAlterado;
+    int valorArmazenado, opcaoEscolhida, valorAlterado;
 
-	criarLista(&minhaLista);
+    criar_lista_vazia(&minhaLista);
 
-	while (1)
-	{
-		
-		printf("\n(1) Inserir elemento no inicio da Lista\n");
-		printf("(2) Remover elemento no inicio da Lista\n");
-		printf("(3) Remover elemento especifico da Lista\n");
-		printf("(4) Mostrar Lista\n");
-		printf("(5) Apagar todos os elementos da Lista\n");
-		printf("(6) Alterar elemento da Lista\n");
-		printf("(0) Sair\n");
+    while (true)
+    {
 
-		printf("Escolha uma das opcoes: ");
-		scanf("%d", &opcaoEscolhida);
+        printf("\n(1) Inserir elemento no inicio da Lista\n");
+        printf("(2) Remover elemento no inicio da Lista\n");
+        printf("(3) Remover elemento especifico da Lista\n");
+        printf("(4) Mostrar Lista\n");
+        printf("(5) Apagar todos os elementos da Lista\n");
+        printf("(6) Alterar elemento da Lista\n");
+        printf("(0) Sair\n");
 
-		system("cls");
-		switch (opcaoEscolhida)
-		{
-		// inserir elemento no inicio	
-		case 1:
-			printf("Valor? ");
-			scanf("%d", &valorArmazenado);
-			inserirNoInicioDaLista(&minhaLista, valorArmazenado);
-			break;
-		// remover o primeiro
-		case 2:
-			removerElementoDoInicioDaLista(&minhaLista);
-			break;
-		// remover determinado elemento
-		case 3: 
-			printf("Valor? ");
-			scanf("%d", &valorArmazenado);
-			removerElementoDaLista(&minhaLista, valorArmazenado);
-			break;
-		// mostrar lista
-		case 4: 
-			if (imprimirListaVazia(&minhaLista))
-			{
-				printf("Lista vazia\n");
-			}
-			else
-			{
-				imprimirListasSalvas(&minhaLista);
-			}
-			break;
-		// apaga todos os elementos da Lista
-		case 5:
-			removerTodosElementos(&minhaLista);
-			break;
-		// altera o elemento escolhido pelo usuario
-		case 6:
-			printf("Valor a ser alterado? ");
-			scanf("%d", &valorArmazenado);
-			printf("Novo valorArmazenado? ");
-			scanf("%d", &valorAlterado);
-			alterarEle(&minhaLista, valorArmazenado, valorAlterado);
-			break;
-		// apaga todas as listas salvas
-		case 0:
-			removerTodosElementos(&minhaLista);
-			exit(0);
-		default:
-			printf("Opcao inexistente!\n");
-		}
-	}
+        printf("Escolha uma das opcoes: ");
+        scanf("%d", &opcaoEscolhida);
+
+        //system("cls");
+        switch (opcaoEscolhida)
+        {
+            // inserir elemento no inicio
+            case 1:
+                printf("Valor? ");
+                scanf("%d", &valorArmazenado);
+                inserir_valor(&minhaLista, valorArmazenado);
+                break;
+                // remover o primeiro
+            case 2:
+                removerElementoDoInicioDaLista(&minhaLista);
+                break;
+                // remover determinado elemento
+            case 3:
+                printf("Valor? ");
+                scanf("%d", &valorArmazenado);
+                remover_elemento_especifico(&minhaLista, valorArmazenado);
+                break;
+                // mostrar lista
+            case 4:
+                if (imprimir_lista_vazia(&minhaLista))
+                {
+                    printf("Lista vazia\n");
+                }
+                else
+                {
+                    imprimir_lista(&minhaLista);
+                }
+                break;
+                // apaga todos os elementos da Lista
+            case 5:
+                removerTodosElementos(&minhaLista);
+                break;
+                // altera o elemento escolhido pelo usuario
+            case 6:
+                printf("Valor a ser alterado? ");
+                scanf("%d", &valorArmazenado);
+                printf("Novo valorArmazenado? ");
+                scanf("%d", &valorAlterado);
+                alterarEle(&minhaLista, valorArmazenado, valorAlterado);
+                break;
+                // apaga todas as listas salvas
+            case 0:
+                removerTodosElementos(&minhaLista);
+                exit(0);
+            default:
+                printf("Opcao inexistente!\n");
+        }
+    }
 }
