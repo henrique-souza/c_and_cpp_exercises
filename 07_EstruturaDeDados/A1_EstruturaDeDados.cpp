@@ -173,54 +173,64 @@ int main()
         printf("Escolha uma das opcoes: ");
         scanf("%d", &opcaoEscolhida);
 
-        //system("cls");
+        system("cls");
         switch (opcaoEscolhida)
         {
+        case 1:
             // inserir elemento no inicio
-            case 1:
-                printf("Valor? ");
-                scanf("%d", &valorArmazenado);
-                inserir_valor(&minhaLista, valorArmazenado);
-                break;
-                // remover o primeiro
-            case 2:
-                removerElementoDoInicioDaLista(&minhaLista);
-                break;
-                // remover determinado elemento
-            case 3:
-                printf("Valor? ");
-                scanf("%d", &valorArmazenado);
-                remover_elemento_especifico(&minhaLista, valorArmazenado);
-                break;
-                // mostrar lista
-            case 4:
-                if (imprimir_lista_vazia(&minhaLista))
-                {
-                    printf("Lista vazia\n");
-                }
-                else
-                {
-                    imprimir_lista(&minhaLista);
-                }
-                break;
-                // apaga todos os elementos da Lista
-            case 5:
-                removerTodosElementos(&minhaLista);
-                break;
-                // altera o elemento escolhido pelo usuario
-            case 6:
-                printf("Valor a ser alterado? ");
-                scanf("%d", &valorArmazenado);
-                printf("Novo valorArmazenado? ");
-                scanf("%d", &valorAlterado);
-                alterarEle(&minhaLista, valorArmazenado, valorAlterado);
-                break;
-                // apaga todas as listas salvas
-            case 0:
-                removerTodosElementos(&minhaLista);
-                exit(0);
-            default:
-                printf("Opcao inexistente!\n");
+            printf("Valor? ");
+            scanf("%d", &valorArmazenado);
+
+            inserir_valor(&minhaLista, valorArmazenado);
+
+            break;
+        case 2:
+            // remover o primeiro
+            removerElementoDoInicioDaLista(&minhaLista);
+
+            break;
+        case 3:
+            // remover determinado elemento
+            printf("Valor? ");
+            scanf("%d", &valorArmazenado);
+
+            remover_elemento_especifico(&minhaLista, valorArmazenado);
+
+            break;
+        case 4:
+            // mostrar lista
+            if (imprimir_lista_vazia(&minhaLista))
+            {
+                printf("Lista vazia\n");
+            }
+            else
+            {
+                imprimir_lista(&minhaLista);
+            }
+            break;
+        case 5:
+            // apaga todos os elementos da Lista
+            removerTodosElementos(&minhaLista);
+
+            break;
+        case 6:
+            // altera o elemento escolhido pelo usuario
+            printf("Valor a ser alterado? ");
+            scanf("%d", &valorArmazenado);
+
+            printf("Novo valorArmazenado? ");
+            scanf("%d", &valorAlterado);
+
+            alterarEle(&minhaLista, valorArmazenado, valorAlterado);
+
+            break;
+        case 0:
+            // apaga todas as listas salvas
+            removerTodosElementos(&minhaLista);
+
+            exit(0);
+        default:
+            printf("Opcao inexistente!\n");
         }
     }
 }

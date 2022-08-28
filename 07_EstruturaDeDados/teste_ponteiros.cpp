@@ -10,7 +10,7 @@ main()
    // valor_da_variavel recebe o mesmo conteudo de numero_digitado
    valor_da_variavel = *ponteiro;
 
-   printf("Valor do Ponteiro: %d \n\n", valor_da_variavel);
+   printf("\n\nValor do Ponteiro: %d \n\n", valor_da_variavel);
    printf("Mostrando o Endereco do Ponteiro: %p \n", ponteiro);
    printf("Valor da variavel apontada: %d \n", *ponteiro);
    printf("Numero digitado nao modificado: %d \n", numero_digitado);
@@ -22,4 +22,5 @@ main()
    printf("Valor da variavel modificada (que inicalmente valia 70): %d \n", numero_digitado);
    printf("Valor armazenado nao modificado: %d \n", valor_da_variavel);
    printf("Mostrando o Endereco do Ponteiro (quando seu valor for 100): %p \n", *ponteiro);
+   printf("\n\n");
 }

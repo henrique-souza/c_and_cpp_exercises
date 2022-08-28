@@ -5,14 +5,16 @@
 #include <clocale>
 
 /* Comentario: Declara��o da Estrutura do Registro */
-struct carro {
+struct carro
+{
     char nome[30];
     char marca[30];
     int ano;
     float preco;
 };
 /* Comentario: Declara��o da Estrutura da �rvore */
-struct No {
+struct No
+{
     int numero;
     struct carro x;
     struct No *esquerda;
@@ -21,25 +23,29 @@ struct No {
 typedef struct No No;
 
 /* Comentario: Criar �rvore */
-void criarArvore(No **pRaiz) {
+void criarArvore(No **pRaiz)
+{
     *pRaiz = nullptr;
 }
 
-int ex1(No **pRaiz) {
+int ex1(No **pRaiz)
+{
     if (*pRaiz == nullptr)
         return 0;
     else
         return 1 + ex1(&(*pRaiz)->esquerda) + ex1(&(*pRaiz)->direita);
 }
 
-int ex2(No **pRaiz) {
+int ex2(No **pRaiz)
+{
     if (*pRaiz == nullptr)
         return 0;
     else
         return (*pRaiz)->x.ano + ex2(&(*pRaiz)->esquerda) + ex2(&(*pRaiz)->direita);
 }
 
-int ex3(No **pRaiz) {
+int ex3(No **pRaiz)
+{
     if (*pRaiz == nullptr)
         return 0;
     else if ((*pRaiz)->esquerda == NULL && (*pRaiz)->direita == nullptr)
@@ -49,14 +55,18 @@ int ex3(No **pRaiz) {
 }
 
 /* Comentario: Inserir Elemento */
-void inserir(No **pRaiz, int numero, struct carro x) {
-    if (*pRaiz == nullptr) {
-        *pRaiz = (No *) malloc(sizeof(No));
+void inserir(No **pRaiz, int numero, struct carro x)
+{
+    if (*pRaiz == nullptr)
+    {
+        *pRaiz = (No *)malloc(sizeof(No));
         (*pRaiz)->esquerda = NULL;
         (*pRaiz)->direita = NULL;
         (*pRaiz)->numero = numero;
         (*pRaiz)->x = x;
-    } else {
+    }
+    else
+    {
         if (numero < (*pRaiz)->numero)
             inserir(&(*pRaiz)->esquerda, numero, x);
         if (numero > (*pRaiz)->numero)
@@ -65,10 +75,12 @@ void inserir(No **pRaiz, int numero, struct carro x) {
 }
 
 /* Comentario: Teste N� Maior Direita */
-No *MaiorDireita(No **no) {
+No *MaiorDireita(No **no)
+{
     if ((*no)->direita != nullptr)
         return MaiorDireita(&(*no)->direita);
-    else {
+    else
+    {
         No *aux = *no;
         if ((*no)->esquerda != nullptr)
             *no = (*no)->esquerda;
@@ -79,10 +91,12 @@ No *MaiorDireita(No **no) {
 }
 
 /* Comentario: Teste N� Maior Esquerda */
-No *MenorEsquerda(No **no) {
+No *MenorEsquerda(No **no)
+{
     if ((*no)->esquerda != nullptr)
         return MenorEsquerda(&(*no)->esquerda);
-    else {
+    else
+    {
         No *aux = *no;
         if ((*no)->direita != nullptr)
             *no = (*no)->direita;
@@ -93,8 +107,10 @@ No *MenorEsquerda(No **no) {
 }
 
 /* Comentario: Remover Elemento */
-void remover(No **pRaiz, int numero) {
-    if (*pRaiz == nullptr) {
+void remover(No **pRaiz, int numero)
+{
+    if (*pRaiz == nullptr)
+    {
         printf("\nN�mero n�o existe na �rvore!\n");
         return;
     }
@@ -102,27 +118,37 @@ void remover(No **pRaiz, int numero) {
         remover(&(*pRaiz)->esquerda, numero);
     else if (numero > (*pRaiz)->numero)
         remover(&(*pRaiz)->direita, numero);
-    else {
+    else
+    {
         No *pAux = *pRaiz;
-        if (((*pRaiz)->esquerda == nullptr) && ((*pRaiz)->direita == nullptr)) {
+        if (((*pRaiz)->esquerda == nullptr) && ((*pRaiz)->direita == nullptr))
+        {
             free(pAux);
             printf("\nRemovido com Sucesso! \n");
             (*pRaiz) = nullptr;
-        } else {
-            if ((*pRaiz)->esquerda == nullptr) {
+        }
+        else
+        {
+            if ((*pRaiz)->esquerda == nullptr)
+            {
                 (*pRaiz) = (*pRaiz)->direita;
                 pAux->direita = nullptr;
                 free(pAux);
                 pAux = nullptr;
                 printf("\nRemovido com Sucesso! \n");
-            } else {
-                if ((*pRaiz)->direita == nullptr) {
+            }
+            else
+            {
+                if ((*pRaiz)->direita == nullptr)
+                {
                     (*pRaiz) = (*pRaiz)->esquerda;
                     pAux->esquerda = nullptr;
                     free(pAux);
                     pAux = nullptr;
                     printf("\nRemovido com Sucesso! \n");
-                } else {
+                }
+                else
+                {
                     pAux = MaiorDireita(&(*pRaiz)->esquerda);
                     pAux->esquerda = (*pRaiz)->esquerda;
                     pAux->direita = (*pRaiz)->direita;
@@ -138,8 +164,10 @@ void remover(No **pRaiz, int numero) {
 }
 
 /* Comentario: Percurso Pre Ordem */
-void exibirPreOrdem(No **pRaiz) {
-    if ((*pRaiz) != nullptr) {
+void exibirPreOrdem(No **pRaiz)
+{
+    if ((*pRaiz) != nullptr)
+    {
         printf("%i\n", (*pRaiz)->numero);
         exibirPreOrdem(&(*pRaiz)->esquerda);
         exibirPreOrdem(&(*pRaiz)->direita);
@@ -147,8 +175,10 @@ void exibirPreOrdem(No **pRaiz) {
 }
 
 /* Comentario: Percurso Em Ordem */
-void exibirEmOrdem(No **pRaiz) {
-    if ((*pRaiz) != nullptr) {
+void exibirEmOrdem(No **pRaiz)
+{
+    if ((*pRaiz) != nullptr)
+    {
         exibirEmOrdem(&(*pRaiz)->esquerda);
         printf("%i\n", (*pRaiz)->numero);
         exibirEmOrdem(&(*pRaiz)->direita);
@@ -156,8 +186,10 @@ void exibirEmOrdem(No **pRaiz) {
 }
 
 /* Comentario: Percurso P�s-Ordem */
-void exibirPosOrdem(No **pRaiz) {
-    if ((*pRaiz) != nullptr) {
+void exibirPosOrdem(No **pRaiz)
+{
+    if ((*pRaiz) != nullptr)
+    {
         exibirPosOrdem(&(*pRaiz)->esquerda);
         exibirPosOrdem(&(*pRaiz)->direita);
         printf("%i\n", (*pRaiz)->numero);
@@ -165,7 +197,8 @@ void exibirPosOrdem(No **pRaiz) {
 }
 
 /* Comentario: Verifica Quem � o Maior */
-int maior(int a, int b) {
+int maior(int a, int b)
+{
     if (a > b)
         return a;
     else
@@ -173,8 +206,10 @@ int maior(int a, int b) {
 }
 
 /* Comentario: Imprimir �rvore */
-int imprimir(No **pRaiz) {
-    if ((*pRaiz) != nullptr) {
+int imprimir(No **pRaiz)
+{
+    if ((*pRaiz) != nullptr)
+    {
         printf("\nPai %i\n", (*pRaiz)->numero);
         printf("Nome %s\n", (*pRaiz)->x.nome);
         if ((*pRaiz)->esquerda != nullptr)
@@ -189,13 +224,15 @@ int imprimir(No **pRaiz) {
             imprimir(&(*pRaiz)->esquerda);
         if ((*pRaiz)->direita != nullptr)
             imprimir(&(*pRaiz)->direita);
-    } else
+    }
+    else
         printf("A �rvore est� vazia! \n");
     return 0;
 }
 
 /* Programa Principal */
-int main() {
+int main()
+{
     struct carro ca;
     int c, resultado;
     No *pRaiz;
@@ -203,7 +240,8 @@ int main() {
     setlocale(LC_ALL, "portuguese");
     int op;
 
-    do {
+    do
+    {
         system("CLS");
         printf("* * * FA�A SUA ESCOLHA * * *\n\n");
         printf("1. Inserir Ve�culo: \n");
@@ -217,74 +255,75 @@ int main() {
         printf("9. Imprimir Ex3 \n");
         printf("\nOp��o [0 para Sair]: ");
         scanf("%d", &op);
-        switch (op) {
-            case 1:
-                system("CLS");
-                printf("\nCarro: ");
-                scanf("%s", &ca.nome);
-                printf("\nMarca: ");
-                scanf("%s", &ca.marca);
-                printf("\nAno de Fabrica��o: ");
-                scanf("%d", &ca.ano);
-                printf("\nPre�o do Ve�culo: ");
-                scanf("%f", &ca.preco);
-                printf("\nDigite um N�mero (Refer�ncia na �rvore): ");
-                scanf("%d", &c);
-                inserir(&pRaiz, c, ca);
-                system("PAUSE");
-                break;
-            case 2:
-                system("CLS");
-                printf("\nDigite um N�mero: ");
-                scanf("%d", &c);
-                remover(&pRaiz, c);
-                system("PAUSE");
-                break;
-            case 3:
-                system("CLS");
-                exibirPreOrdem(&pRaiz);
-                system("PAUSE");
-                break;
-            case 4:
-                system("CLS");
-                exibirEmOrdem(&pRaiz);
-                system("PAUSE");
-                break;
-            case 5:
-                system("CLS");
-                exibirPosOrdem(&pRaiz);
-                system("PAUSE");
-                break;
-            case 6:
-                system("CLS");
-                imprimir(&pRaiz);
-                printf("\n");
-                system("PAUSE");
-                break;
-            case 7:
-                system("CLS");
-                resultado = ex1(&pRaiz);
-                printf("\n Ex1 %i \n", resultado);
-                system("PAUSE");
-                break;
-            case 8:
-                system("CLS");
-                resultado = ex2(&pRaiz);
-                printf("\n Ex2 %i \n", resultado);
-                system("PAUSE");
-                break;
-            case 9:
-                system("CLS");
-                resultado = ex3(&pRaiz);
-                printf("\n Ex3 %i \n", resultado);
-                system("PAUSE");
-                break;
-            case 0:
-                break;
-            default:
-                printf("\n\nOp��o Inv�lida. \n");
-                system("PAUSE");
-                break;
+        switch (op)
+        {
+        case 1:
+            system("CLS");
+            printf("\nCarro: ");
+            scanf("%s", &ca.nome);
+            printf("\nMarca: ");
+            scanf("%s", &ca.marca);
+            printf("\nAno de Fabrica��o: ");
+            scanf("%d", &ca.ano);
+            printf("\nPre�o do Ve�culo: ");
+            scanf("%f", &ca.preco);
+            printf("\nDigite um N�mero (Refer�ncia na �rvore): ");
+            scanf("%d", &c);
+            inserir(&pRaiz, c, ca);
+            system("PAUSE");
+            break;
+        case 2:
+            system("CLS");
+            printf("\nDigite um N�mero: ");
+            scanf("%d", &c);
+            remover(&pRaiz, c);
+            system("PAUSE");
+            break;
+        case 3:
+            system("CLS");
+            exibirPreOrdem(&pRaiz);
+            system("PAUSE");
+            break;
+        case 4:
+            system("CLS");
+            exibirEmOrdem(&pRaiz);
+            system("PAUSE");
+            break;
+        case 5:
+            system("CLS");
+            exibirPosOrdem(&pRaiz);
+            system("PAUSE");
+            break;
+        case 6:
+            system("CLS");
+            imprimir(&pRaiz);
+            printf("\n");
+            system("PAUSE");
+            break;
+        case 7:
+            system("CLS");
+            resultado = ex1(&pRaiz);
+            printf("\n Ex1 %i \n", resultado);
+            system("PAUSE");
+            break;
+        case 8:
+            system("CLS");
+            resultado = ex2(&pRaiz);
+            printf("\n Ex2 %i \n", resultado);
+            system("PAUSE");
+            break;
+        case 9:
+            system("CLS");
+            resultado = ex3(&pRaiz);
+            printf("\n Ex3 %i \n", resultado);
+            system("PAUSE");
+            break;
+        case 0:
+            break;
+        default:
+            printf("\n\nOp��o Inv�lida. \n");
+            system("PAUSE");
+            break;
         }
     } while (op != 0);
     return 0;

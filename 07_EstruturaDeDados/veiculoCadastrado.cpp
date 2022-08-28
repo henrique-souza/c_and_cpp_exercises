@@ -16,9 +16,9 @@ int main()
 
     veiculoCadastrado *primeiroVeiculoCadastrado = NULL, *veiculoAnterior, *veiculoAtual, *ultimoVeiculoCadastrado = NULL;
 
-     char opcaoEscolhida;
+    char opcaoEscolhida;
 
-    // primeiroVeiculoCadastrado = NULL; 
+    // primeiroVeiculoCadastrado = NULL;
 
     do
     {
