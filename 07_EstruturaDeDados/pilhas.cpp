@@ -97,10 +97,10 @@ void MostrarPilha(Item *topo)
 
 void Menu()
 {
-    printf("\n\nDigite a sua escolha: \n"
-           "\t\t1. Empilhar elemento \n"
-           "\t\t2. Desempilhar \n"
-           "\t\t3. Sair\n"
+    printf("\n\n\t\tMENU DE OPCOES\n\n"
+           "1. Empilhar elemento \n"
+           "2. Desempilhar \n"
+           "0. Sair\n"
            "\n\nEscolha uma das opcoes: ");
 }
 
@@ -112,7 +112,7 @@ int main()
     Menu();
     scanf("%i", &opcao);
 
-    while (opcao != 3)
+    while (opcao != 0)
     {
         switch (opcao)
         {
@@ -120,8 +120,10 @@ int main()
             printf("Digite um numero: ");
             scanf("\n%i", &numero);
 
+            // Empilhando o dado
             Empilhar(&topo, numero);
 
+            // Imprimindo pilha armazenada
             MostrarPilha(topo);
 
             break;
@@ -141,5 +143,6 @@ int main()
         Menu();
         scanf("%i", &opcao);
     }
+    system("cls");
     system("pause");
 }

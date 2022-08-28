@@ -54,12 +54,15 @@ void inserir_valor(lista_encadeada *lista_armazenada, int dado)
 void remover_elemento_especifico(lista_encadeada *lista_armazenada, int dado)
 {
     Celula *ponteiro_posterior, *ponteiro_anterior;
+
     ponteiro_anterior = NULL;
+
     ponteiro_posterior = lista_armazenada->primeiro_ponteiro;
 
     while (ponteiro_posterior != NULL && ponteiro_posterior->ponteiro != dado)
     {
         ponteiro_anterior = ponteiro_posterior;
+
         ponteiro_posterior = ponteiro_posterior->proximo_ponteiro;
     }
 
@@ -69,7 +72,9 @@ void remover_elemento_especifico(lista_encadeada *lista_armazenada, int dado)
         if (ponteiro_posterior != NULL)
         {
             ponteiro_anterior->proximo_ponteiro = ponteiro_posterior->proximo_ponteiro;
+
             free(ponteiro_posterior);
+
             printf("Valor Removido\n");
         }
         else
@@ -83,7 +88,9 @@ void remover_elemento_especifico(lista_encadeada *lista_armazenada, int dado)
         if (ponteiro_posterior != NULL && ponteiro_posterior->ponteiro == dado)
         {
             lista_armazenada->primeiro_ponteiro = ponteiro_posterior->proximo_ponteiro;
+
             free(ponteiro_posterior);
+
             printf("Valor Removido\n");
         }
         else
@@ -103,6 +110,7 @@ int main()
     lista_encadeada lista;
 
     int valor_armazenado, opcao_escolhida;
+
     int LOOPING = 1;
 
     criar_lista_vazia(&lista);
