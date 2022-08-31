@@ -4,18 +4,18 @@
 //
 // Created by Henrique Souza on 28/08/2022.
 //
-struct Item
+struct Pilha
 {
     int numero;
-    struct Item *proximo;
+    struct Pilha *proximo;
 };
 
-void Inicializar(Item **topo)
+void inicializando_pilha(Pilha **topo)
 {
-    *topo = nullptr;
+    *topo = NULL;
 }
 
-bool EstaVazia(Item **topo)
+bool pilha_vazia(Pilha **topo)
 {
     if (*topo == NULL)
     {
@@ -27,11 +27,11 @@ bool EstaVazia(Item **topo)
     }
 }
 
-void Empilhar(Item **topo, int elemento)
+void empilhar(Pilha **topo, int elemento)
 {
-    Item *novo;
+    Pilha *novo;
 
-    novo = (Item *)malloc(sizeof(Item));
+    novo = (Pilha *)malloc(sizeof(Pilha));
 
     novo->numero = elemento;
 
@@ -41,12 +41,12 @@ void Empilhar(Item **topo, int elemento)
     *topo = novo;
 }
 
-int Desempilhar(Item **topo)
+int desempilhar(Pilha **topo)
 {
     int result;
-    Item *auxiliar;
+    Pilha *auxiliar;
 
-    if (EstaVazia(topo))
+    if (pilha_vazia(topo))
     {
         printf("\n stack underflow! \n");
 
@@ -54,7 +54,7 @@ int Desempilhar(Item **topo)
     }
     else
     {
-        // -> Elemento retirado do topo
+        // Elemento retirado do topo
         result = (*topo)->numero;
 
         auxiliar = *topo;
@@ -67,15 +67,14 @@ int Desempilhar(Item **topo)
     }
 }
 
-void MostrarPilha(Item *topo)
+void imprimir_pilha(Pilha *topo)
 {
-    int i = 0;
-    Item *item;
+    int ocorrencia = 0;
+    Pilha *item;
 
-    printf("\n\n Listando...\n\n");
-    printf("---------------------------------\n");
+    printf("\t\tPilha\n\n");
 
-    if (EstaVazia(&topo))
+    if (pilha_vazia(&topo))
     {
         printf("A Pilha esta vazia!\n");
     }
@@ -85,31 +84,30 @@ void MostrarPilha(Item *topo)
 
         while (item != NULL)
         {
-            i++;
+            ocorrencia++;
 
-            printf("[%i] -> %i\n", i, item->numero);
+            printf("[%i] -> %i\n", ocorrencia, item->numero);
 
             item = item->proximo;
         }
     }
-    printf("---------------------------------\n");
 }
 
-void Menu()
+void menu()
 {
-    printf("\n\n\t\tMENU DE OPCOES\n\n"
-           "1. Empilhar elemento \n"
-           "2. Desempilhar \n"
-           "0. Sair\n"
+    printf("\n\tMENU DE OPCOES\n\n"
+           "1.\tEmpilhar elemento\n"
+           "2.\tDesempilhar\n"
+           "0.\tSair\n"
            "\n\nEscolha uma das opcoes: ");
 }
 
 int main()
 {
-    Item *topo = NULL;
+    Pilha *topo = NULL;
     int opcao, numero;
 
-    Menu();
+    menu();
     scanf("%i", &opcao);
 
     while (opcao != 0)
@@ -121,18 +119,22 @@ int main()
             scanf("\n%i", &numero);
 
             // Empilhando o dado
-            Empilhar(&topo, numero);
+            empilhar(&topo, numero);
+
+            system("cls");
 
             // Imprimindo pilha armazenada
-            MostrarPilha(topo);
+            imprimir_pilha(topo);
 
             break;
         case 2:
-            numero = Desempilhar(&topo);
+            numero = desempilhar(&topo);
+
+            system("cls");
+
+            imprimir_pilha(topo);
 
             printf("\n Numero desempilhado: %d \n", numero);
-
-            MostrarPilha(topo);
 
             break;
         default:
@@ -140,7 +142,7 @@ int main()
 
             break;
         }
-        Menu();
+        menu();
         scanf("%i", &opcao);
     }
     system("cls");

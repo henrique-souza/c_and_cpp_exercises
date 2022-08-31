@@ -128,6 +128,7 @@ int main()
         {
         case 0:
             LOOPING = 0;
+            exit(0);
         case 1:
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
