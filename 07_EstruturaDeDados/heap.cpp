@@ -3,7 +3,7 @@
 #define POSICOES 10
 
 //
-// Created by Henrique Souza on 22/09/2022.
+// Created by Henrique Souza on 05/09/2022.
 //
 int pai(int *valor_heap, int posicao)
 {
@@ -57,7 +57,7 @@ int main()
         }
         if (posicao_escolhida < 0 || posicao_escolhida > POSICOES)
         {
-            printf("\nPosição invalida");
+            printf("\nPosicao invalida");
         }
     } while (posicao_escolhida != 0);
 }
