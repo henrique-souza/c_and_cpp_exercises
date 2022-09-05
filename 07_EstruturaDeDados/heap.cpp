@@ -1,63 +1,63 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define POSICOES 10
+#define POSITIONS 10
 
 //
 // Created by Henrique Souza on 05/09/2022.
 //
-int pai(int *valor_heap, int posicao)
+int father(int *heap_value, int position)
 {
-    return valor_heap[posicao / 2 - 1];
+    return heap_value[position / 2 - 1];
 }
 
-int filho_esquerda(int *valor_heap, int posicao)
+int left_child(int *heap_value, int position)
 {
-    return valor_heap[posicao * 2 - 1];
+    return heap_value[position * 2 - 1];
 }
 
-int filho_direita(int *valor_heap, int posicao)
+int right_child(int *heap_value, int position)
 {
-    return valor_heap[posicao * 2];
+    return heap_value[position * 2];
 }
 
 int main()
 {
-    int heap[POSICOES] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
-    int posicao_escolhida, LOOPING = 1;
+    int heap[POSITIONS] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
+    int chosen_position, LOOPING = 1;
 
     do
     {
         printf("\n\n\tMENUS DE OPCOES\n");
         printf("0.\tSair\n");
         printf("\n\nEscolha uma das posicoes entre 1 e 10: ");
-        scanf("%d", &posicao_escolhida);
+        scanf("%d", &chosen_position);
         system("cls");
 
-        if (posicao_escolhida >= 1 && posicao_escolhida <= POSICOES)
+        if (chosen_position >= 1 && chosen_position <= POSITIONS)
         {
-            printf("\n\tValor do No da Arvore atual: %d", heap[posicao_escolhida - 1]);
-            printf("\n\tValor do pai: %d", pai(heap, posicao_escolhida));
+            printf("\n\tValor do No da Arvore atual: %d", heap[chosen_position - 1]);
+            printf("\n\tValor do pai: %d", father(heap, chosen_position));
 
-            if (posicao_escolhida * 2 - 1 > 10)
+            if (chosen_position * 2 - 1 > 10)
             {
-                printf("\n\tO No '%d' nao tem filho da esquerda", heap[posicao_escolhida - 1]);
+                printf("\n\tO No '%d' nao tem filho da esquerda", heap[chosen_position - 1]);
             }
             else
             {
-                printf("\n\tValor do filho da esquerda: %d", filho_esquerda(heap, posicao_escolhida));
+                printf("\n\tValor do filho da esquerda: %d", left_child(heap, chosen_position));
             }
-            if (posicao_escolhida * 2 >= 10)
+            if (chosen_position * 2 >= 10)
             {
-                printf("\n\tO No '%d' nao tem filho da direita\n", heap[posicao_escolhida - 1]);
+                printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
             }
             else
             {
-                printf("\n\tValor do filho da direita: %d\n", filho_direita(heap, posicao_escolhida));
+                printf("\n\tValor do filho da direita: %d\n", right_child(heap, chosen_position));
             }
         }
-        if (posicao_escolhida < 0 || posicao_escolhida > POSICOES)
+        if (chosen_position < 0 || chosen_position > POSITIONS)
         {
             printf("\nPosicao invalida");
         }
-    } while (posicao_escolhida != 0);
+    } while (chosen_position != 0);
 }
