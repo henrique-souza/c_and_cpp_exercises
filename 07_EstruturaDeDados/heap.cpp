@@ -38,24 +38,16 @@ int main()
             printf("\n\tValor do No da Arvore atual: %d", heap[chosen_position - 1]);
             printf("\n\tValor do pai: %d", father(heap, chosen_position));
 
-            if (chosen_position * 2 - 1 > 10)
+            if (chosen_position * 2 - 1 > 10 || chosen_position * 2 >= 10)
             {
-                printf("\n\tO No '%d' nao tem filho da esquerda", heap[chosen_position - 1]);
+                printf("\n\tO No '%d' nao tem filho da esquerda ou da direita", heap[chosen_position - 1]);
             }
             else
             {
-                printf("\n\tValor do filho da esquerda: %d", left_child(heap, chosen_position));
-            }
-            if (chosen_position * 2 >= 10)
-            {
-                printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
-            }
-            else
-            {
-                printf("\n\tValor do filho da direita: %d\n", right_child(heap, chosen_position));
+                printf("\n\tValor do filho da esquerda: %d e valor do filho da direita: %d", left_child(heap, chosen_position), right_child(heap, chosen_position));
             }
         }
-        if (chosen_position < 0 || chosen_position > POSITIONS)
+        else
         {
             printf("\nPosicao invalida");
         }
