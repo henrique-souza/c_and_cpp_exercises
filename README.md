@@ -11,21 +11,16 @@ EN
 -  ASCENCIO, Ana Fernanda Gomes. **Estruturas de dados: algoritmos, análise da complexidade e implementações
 em JAVA e C/C++** \ Ana Fernanda Gomes Ascencio e Graziela Santos de Araújo. – São Paulo: Pearson Prentice Hall, 2010.
 
-> Diagram of Heap in [heap.cpp](../heap.cpp)
+> Diagram of Heap in [heap.cpp](/07_EstruturaDeDados/heap.cpp)
 
 ```mermaid
-classDiagram
-    Person <|-- PhysicalPerson
-    Person <|-- LegalPerson
-    Person : +String name
-    Person : +String email
-
-    class PhysicalPerson{
-        +String cpf
-        +say_something()
-    }
-    class LegalPerson{
-        +String cnpj
-        +pay_provider()
-    }
+graph TB;
+    A((8))-->B((3))
+    A-->C((10))
+    B-->D((1))
+    B-->E((6))
+    C-->F((9))
+    C-->G((14))
+    E-->H((4))
+    E-->I((7))
 ```
