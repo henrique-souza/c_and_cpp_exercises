@@ -5,6 +5,7 @@
 
 //
 // Created by Henrique Souza on 05/09/2022.
+// Graphic representation of this algorithm in ./README.md
 //
 int father(int *heap_value, int position)
 {
