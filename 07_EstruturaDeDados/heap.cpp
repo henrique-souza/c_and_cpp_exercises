@@ -62,8 +62,7 @@ void print_heap(int array_in[], int array_size)
 
 int main()
 {
-    int heap[POSITIONS] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
-    int chosen_position, LOOPING = 1;
+    int chosen_position, heap[POSITIONS] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
 
     do
     {
