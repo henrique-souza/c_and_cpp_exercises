@@ -91,7 +91,6 @@ int main()
                 printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
             }
             else
-
             {
                 printf("\n\tValor do filho da direita: %d do No: %d\n", right_child(heap, chosen_position), heap[chosen_position - 1]);
             }
