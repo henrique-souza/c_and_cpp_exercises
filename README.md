@@ -29,3 +29,20 @@ graph TB;
     C-->I((2))
     E-->J((1))
 ```
+
+
+> Diagram of Heap in [heap.cpp](/07_EstruturaDeDados/heap.cpp) after insert new value (15) in Heap [17, 12, 8, 5, 3, 6, 2, 4, 2, 1]
+
+```mermaid
+graph TB;
+    A((17))-->B((15))
+    A-->C((8))
+    B-->D((5))
+    B-->E((12))
+    C-->F((6))
+    D-->G((2))
+    D-->H((4))
+    C-->I((2))
+    E-->J((1))
+    E-->K((3))
+```
