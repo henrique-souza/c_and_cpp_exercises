@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <bits/stdc++.h>
-#define POSITIONS 10
+#define POSITIONS 11
 
 //
 // Created by Henrique Souza on 05/09/2022.
@@ -60,46 +60,92 @@ void print_heap(int array_in[], int array_size)
     }
 }
 
+// void insert_value(int array_in[], int value, int key)
+// {
+//     value = value + 1;
+//     array_in[value - 1] = key;
+
+//     heapify(array_in, value, value - 1);
+// }
+
+// void remove_value()
+// {
+// }
+
 int main()
 {
-    int chosen_position, heap[POSITIONS] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
+    int option, chosen_position, heap[POSITIONS] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
 
     do
     {
         printf("\n\n\tMENUS DE OPCOES\n");
+        printf("1.\tConsultar valores do No\n");
+        printf("2.\tInserir valor\n");
+        printf("3.\tImprimir heap\n");
         printf("0.\tSair\n");
-        printf("\n\nEscolha uma das posicoes entre 1 e 10: ");
-        scanf("%d", &chosen_position);
-        system("cls");
+        printf("\n\nEscolha uma das opções: ");
+        scanf("%d", &option);
 
-        if (chosen_position >= 1 && chosen_position <= POSITIONS)
+        switch (option)
         {
-            printf("\n\tValor do No da Arvore atual: %d", heap[chosen_position - 1]);
-            printf("\n\tValor do pai: %d", father(heap, chosen_position));
+        case 0:
+            exit(0);
+            system("pause");
+            break;
 
-            if (chosen_position * 2 - 1 > 10)
+        case 1:
+            system("cls");
+
+            printf("\n\nEscolha uma das posicoes entre 1 e 10: ");
+            scanf("%d", &chosen_position);
+
+            system("cls");
+
+            if (chosen_position >= 1 && chosen_position <= POSITIONS)
             {
-                printf("\n\tO No '%d' nao tem filho da esquerda", heap[chosen_position - 1]);
+                printf("\n\tValor do No da Arvore atual: %d", heap[chosen_position - 1]);
+                printf("\n\tValor do pai: %d", father(heap, chosen_position));
+
+                if (chosen_position * 2 - 1 > 10)
+                {
+                    printf("\n\tO No '%d' nao tem filho da esquerda", heap[chosen_position - 1]);
+                }
+                else
+                {
+                    printf("\n\tValor do filho da esquerda: %d do No: %d", left_child(heap, chosen_position),
+                    heap[chosen_position - 1]);
+                }
+                if (chosen_position * 2 >= 10)
+                {
+                    printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
+                }
+                else
+                {
+                    printf("\n\tValor do filho da direita: %d do No: %d\n", right_child(heap, chosen_position),
+                    heap[chosen_position - 1]);
+                }
             }
-            else
+            if (chosen_position < 0 || chosen_position > POSITIONS)
             {
-                printf("\n\tValor do filho da esquerda: %d do No: %d", left_child(heap, chosen_position), heap[chosen_position - 1]);
+                printf("\nPosicao invalida");
             }
-            if (chosen_position * 2 >= 10)
-            {
-                printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
-            }
-            else
-            {
-                printf("\n\tValor do filho da direita: %d do No: %d\n", right_child(heap, chosen_position), heap[chosen_position - 1]);
-            }
+            break;
+
+        case 2:
+            // printf("\n\nTeste: ");
+            // scanf("%d", &new_value);
+
+            // insert_value(heap, POSITIONS, new_value);
+
+            print_heap(heap, POSITIONS);
+
+        case 3:
+            system("cls");
+
+            print_heap(heap, POSITIONS);
+
+        default:
+            break;
         }
-        if (chosen_position < 0 || chosen_position > POSITIONS)
-        {
-            printf("\nPosicao invalida");
-        }
-
-        print_heap(heap, POSITIONS);
-
     } while (chosen_position != 0);
 }
