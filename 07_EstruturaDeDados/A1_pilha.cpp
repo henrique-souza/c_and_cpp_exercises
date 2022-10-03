@@ -57,37 +57,9 @@ float topo_da_pilha(Pilha *pilha)
     return pilha->pElem[pilha->topo];
 }
 
-void imprimir_pilha(Pilha *pilha)
-{
-    for (int i = pilha->topo; i >= 0; i--)
-    {
-        printf("%d", pilha->pElem[i]);
-        printf("\n");
-    }
-    // int i = 0;
-    // Pilha *item;
-    // printf("\n\tPILHA\n\n");
-    // printf("---------------------------------\n");
-    // if (pilha_vazia(&pilha) == 2)
-    // {
-    //     printf("A Pilha esta vazia!\n");
-    // }
-    // else
-    // {
-    //     item = topo;
-    //     while (item != NULL)
-    //     {
-    //         i++;
-    //         printf("[%i] -> %i\n", i, item->capa);
-    //         item = item->pElem;
-    //     }
-    // }
-    // printf("---------------------------------\n");
-}
-
 void menu()
 {
-    printf("\n\n\tMENU DE OPCOES\n\n"
+    printf("\n\t\tMENU DE OPCOES\n\n"
            "1.\tEmpilhar (Push)\n"
            "2.\tDesempilhar (Pop)\n"
            "3.\tMostrar topo\n"
@@ -132,8 +104,6 @@ int main()
                 empilhar(&pilha_criada, valor);
 
                 system("cls");
-                // Imprimindo topo armazenada
-                imprimir_pilha(&pilha_criada);
             }
             break;
         case 2: // Pop
@@ -148,8 +118,6 @@ int main()
                 system("cls");
 
                 printf("\n Numero desempilhado: %.1f \n", valor);
-
-                imprimir_pilha(&pilha_criada);
             }
             break;
         case 3: // Mostrar o topo
@@ -160,12 +128,12 @@ int main()
             else
             {
                 valor = topo_da_pilha(&pilha_criada);
-                printf("\nTopo atual da Pilha: %.1f\n", valor);
+                printf("\nTopo atual da Pilha: %.0f\n", valor);
             }
 
             break;
         default:
-            printf("Escolha invalida.\n\n");
+            printf("\nEscolha invalida\n\n");
 
             break;
         }
