@@ -1,30 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Declarando estutura da lista
 struct Cel
 {
     int conteudo;
     struct Cel *prox;
 };
 
-// Inicializando uma lista vazia
 void criar_lista_vazia(Cel *lista_vazia)
 {
     lista_vazia->prox = NULL;
 }
 
-// Função que verifica se a lista encadeada está vazia ou não
 int lista_vazia(Cel *lista_armazenada)
 {
     return (lista_armazenada->prox == NULL);
 }
 
-// Função que imprime a lista salva
 void imprimir_lista(Cel *lista_salva)
 {
     Cel *conteudo_salvo;
-    // system("cls");
 
     printf("Lista salva\n");
 
@@ -34,11 +29,6 @@ void imprimir_lista(Cel *lista_salva)
     }
 }
 
-/*
- * Função que coleta um valor digitado pelo usuário e
- * insere no fim da lista. Caso o elemento ocupe um
- * espaço de memória maior que o possível, imprime uma mensagem
- */
 void inserir_elemento(Cel *lista_armazenada, int dado)
 {
     Cel *novo_elemento;
@@ -53,12 +43,10 @@ void inserir_elemento(Cel *lista_armazenada, int dado)
     }
     else
     {
-        // Interceptando a chamada do "Stack overflow", de explosão de memória
         printf("Memoria Insuficiente\n");
     }
 }
 
-// Função que busca o elemento digitado pelo usuário.
 void buscar_elemento(Cel *lista_armazenada, int elemento)
 {
     Cel *elemento_a_buscar;
@@ -72,10 +60,6 @@ void buscar_elemento(Cel *lista_armazenada, int elemento)
     printf("\nElemento buscado: %d \n", elemento_a_buscar->conteudo);
 }
 
-/*
- * Função que remove elemento apontado pelo usuário.
- * Caso elemento não exista na lista, uma mensagem é mostrada.
- */
 void remover_elemento(Cel *lista_armazenada, int dado)
 {
     Cel *ponteiro_posterior, *ponteiro_anterior;
@@ -132,18 +116,14 @@ void remover_elemento(Cel *lista_armazenada, int dado)
 
 int main()
 {
-    // declarando uma variável lista usando a estrutura de 'Cel'
     Cel lista;
 
-    // Declarando variáveis a serem utilizadas
     int valor_armazenado, opcao_escolhida, LOOPING = 1;
 
-    // Inicializando uma lista
     criar_lista_vazia(&lista);
 
     while (LOOPING != 0)
     {
-        // Menu
         printf("\t\tMENU DE OPCOES\n\n");
         printf("\n1.\tInserir elemento no inicio da Lista\n");
         printf("2.\tRemover elemento especifico da Lista\n");
@@ -155,11 +135,9 @@ int main()
 
         switch (opcao_escolhida)
         {
-        // Encerra o programa e libera espaço
         case 0:
             LOOPING = 0;
             exit(0);
-        // Inicia o processo de inserção de elemento
         case 1:
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
@@ -173,7 +151,6 @@ int main()
             printf("\n\n");
 
             break;
-        // Inicia o processo de remoção de elemento
         case 2:
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
@@ -185,7 +162,6 @@ int main()
             printf("\n\n");
 
             break;
-        // Caso a lista não esteja vazia, imprime a lista armazenada
         case 3:
             if (lista_vazia(&lista))
             {
@@ -204,7 +180,6 @@ int main()
                 printf("\n\n");
             }
             break;
-        // Inicia o processo de busca de elemento
         case 4:
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
@@ -213,9 +188,6 @@ int main()
 
             break;
         default:
-            /*
-             * Se houver escolha de uma opção inexistente no menu, imprime mensagem
-             */
             printf("Opcao inexistente!\n");
         }
     }
