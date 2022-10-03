@@ -3,12 +3,11 @@
 
 struct Pilha
 {
-    int topo;     // topo da pilha
-    int capa;     // capacidade
-    float *pElem; // primeiro_elemento
+    int topo;
+    int capa;
+    float *pElem;
 };
 
-// Inicializa a pilha
 void criar_pilha(Pilha *pilha, int capa)
 {
     pilha->topo = -1;
@@ -16,7 +15,6 @@ void criar_pilha(Pilha *pilha, int capa)
     pilha->pElem = (float *)malloc(capa * sizeof(float));
 }
 
-// Faz a verificação dos dados da pilha
 int pilha_vazia(Pilha *pilha)
 {
     if (pilha->topo == -1)
@@ -29,7 +27,6 @@ int pilha_vazia(Pilha *pilha)
     }
 }
 
-// Faz a verificação dos dados da pilha
 int pilha_cheia(Pilha *pilha)
 {
     if (pilha->topo == pilha->capa - 1)
@@ -42,31 +39,21 @@ int pilha_cheia(Pilha *pilha)
     }
 }
 
-// Empilha os dados na pilha, caso não ultrapasse a capacidade
 void empilhar(Pilha *pilha, float elemento)
 {
-    // Abre um espaço no topo da pilha
     pilha->topo++;
-    // Atribui à pilha (ao novo endereço no topo) o 'elemento' recebido pela função
     pilha->pElem[pilha->topo] = elemento;
 }
 
-// Desempilha os dados na pilha, caso existam
 float desempilhar(Pilha *pilha)
 {
     float auxiliar = pilha->pElem[pilha->topo];
-    /*
-     * Remove o espaço aberto no topo, caso exista
-     * e com isso também remove o 'elemento'
-     */
     pilha->topo--;
     return auxiliar;
 }
 
-// Retorna o topo da pilha, caso exista
 float topo_da_pilha(Pilha *pilha)
 {
-    // Retorna o 'elemento' que se encontra no topo da Pilha
     return pilha->pElem[pilha->topo];
 }
 
@@ -82,16 +69,13 @@ void menu()
 
 int main()
 {
-    // Criando uma célula 'pilha_criada' para manipulação da struct 'Pilha'
     Pilha pilha_criada;
     int opcao, capacidade;
     float valor;
 
-    // Definindo capacidade da Pilha
     printf("\nQual a capacidade da pilha? ");
     scanf("%d", &capacidade);
 
-    // Inicializando a pilha
     criar_pilha(&pilha_criada, capacidade);
 
     while (1)
@@ -116,7 +100,6 @@ int main()
                 printf("Digite um valor a ser armazenado na pilha: ");
                 scanf("%f", &valor);
 
-                // Empilhando o dado
                 empilhar(&pilha_criada, valor);
 
                 system("cls");
