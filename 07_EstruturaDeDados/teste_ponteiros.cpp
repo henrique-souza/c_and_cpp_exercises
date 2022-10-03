@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-main()
+int main()
 {
    int numero_digitado, valor_da_variavel, *ponteiro;
 

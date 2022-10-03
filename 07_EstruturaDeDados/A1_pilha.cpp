@@ -1,150 +1,167 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct PILHA
+struct Pilha
 {
-    int numero;
-    struct PILHA *proximo_elemento;
+    int topo;
+    int capa;     // capacidade
+    float *pElem; // primeiro_elemento
 };
 
-void inicializando_pilha(PILHA **topo)
+void criar_pilha(Pilha *pilha, int capa)
 {
-    *topo = NULL;
+    pilha->topo = -1;
+    pilha->capa = capa;
+    pilha->pElem = (float *)malloc(capa * sizeof(float));
 }
 
-bool pilha_vazia(PILHA **topo)
+int pilha_vazia(Pilha *pilha)
 {
-    if (*topo == NULL)
+    if (pilha->topo == -1)
     {
-        return true;
+        return 1;
     }
     else
     {
-        return false;
+        return 0;
     }
 }
 
-bool pilha_cheia(PILHA **topo)
+int pilha_cheia(Pilha *pilha)
 {
-    if (*topo != NULL)
+    if (pilha->topo == pilha->capa - 1)
     {
-        return true;
+        return 1;
     }
     else
     {
-        return false;
+        return 2;
     }
 }
 
-void empilhar(PILHA **topo, int elemento)
+void empilhar(Pilha *pilha, float elemento)
 {
-    PILHA *novo_elemento;
-
-    novo_elemento = (PILHA *)malloc(sizeof(PILHA));
-
-    novo_elemento->numero = elemento;
-
-    novo_elemento->proximo_elemento = *topo;
-
-    *topo = novo_elemento;
+    pilha->topo++;
+    pilha->pElem[pilha->topo] = elemento;
 }
 
-int desempilhar(PILHA **topo)
+float desempilhar(Pilha *pilha)
 {
-    int result;
-    PILHA *auxiliar;
-
-    if (pilha_vazia(topo))
-    {
-        printf("\n stack underflow! \n");
-
-        exit(1);
-    }
-    else
-    {
-        // -> Elemento retirado do topo
-        result = (*topo)->numero;
-
-        auxiliar = *topo;
-
-        *topo = (*topo)->proximo_elemento;
-
-        free(auxiliar);
-
-        return result;
-    }
+    float auxiliar = pilha->pElem[pilha->topo];
+    pilha->topo--;
+    return auxiliar;
 }
 
-void imprimir_pilha(PILHA *topo)
+float topo_da_pilha(Pilha *pilha)
 {
-    int i = 0;
-    PILHA *item;
+    return pilha->pElem[pilha->topo];
+}
 
-    printf("\n\tPILHA\n\n");
-    printf("---------------------------------\n");
-
-    if (pilha_vazia(&topo))
+void imprimir_pilha(Pilha *pilha)
+{
+    for (int i = pilha->topo; i >= 0; i--)
     {
-        printf("A Pilha esta vazia!\n");
+        printf("%d", pilha->pElem[i]);
+        printf("\n");
     }
-    else
-    {
-        item = topo;
-
-        while (item != NULL)
-        {
-            i++;
-
-            printf("[%i] -> %i\n", i, item->numero);
-
-            item = item->proximo_elemento;
-        }
-    }
-    printf("---------------------------------\n");
+    // int i = 0;
+    // Pilha *item;
+    // printf("\n\tPILHA\n\n");
+    // printf("---------------------------------\n");
+    // if (pilha_vazia(&pilha) == 2)
+    // {
+    //     printf("A Pilha esta vazia!\n");
+    // }
+    // else
+    // {
+    //     item = topo;
+    //     while (item != NULL)
+    //     {
+    //         i++;
+    //         printf("[%i] -> %i\n", i, item->capa);
+    //         item = item->pElem;
+    //     }
+    // }
+    // printf("---------------------------------\n");
 }
 
 void menu()
 {
     printf("\n\n\tMENU DE OPCOES\n\n"
-           "1.\tEmpilhar\n"
-           "2.\tDesempilhar\n"
+           "1.\tEmpilhar (Push)\n"
+           "2.\tDesempilhar (Pop)\n"
+           "3.\tMostrar topo\n"
            "0.\tSair\n"
            "\n\nEscolha uma das opcoes: ");
 }
 
 int main()
 {
-    PILHA *topo = NULL;
+    Pilha pilha_criada;
+    int opcao, capacidade;
+    float valor;
 
-    int opcao, numero;
+    printf("\nQual a capacidade da pilha? ");
+    scanf("%d", &capacidade);
 
-    menu();
-    scanf("%i", &opcao);
+    criar_pilha(&pilha_criada, capacidade);
 
-    while (opcao != 0)
+    while (1)
     {
+
+        menu();
+        scanf("%i", &opcao);
+
         switch (opcao)
         {
-        case 1:
-            printf("Digite um numero: ");
-            scanf("\n%i", &numero);
-
-            // Empilhando o dado
-            empilhar(&topo, numero);
-
-            system("cls");
-            // Imprimindo pilha armazenada
-            imprimir_pilha(topo);
-
+        case 0:
+            exit(0);
             break;
-        case 2:
-            numero = desempilhar(&topo);
+        case 1: // Push
+            if (pilha_cheia(&pilha_criada) == 1)
+            {
+                printf("\nPilha esta cheia!\n");
+            }
+            else
+            {
+                system("cls");
+                printf("Digite um valor a ser armazenado na pilha: ");
+                scanf("%f", &valor);
 
-            system("cls");
+                // Empilhando o dado
+                empilhar(&pilha_criada, valor);
 
-            printf("\n Numero desempilhado: %d \n", numero);
+                system("cls");
+                // Imprimindo topo armazenada
+                imprimir_pilha(&pilha_criada);
+            }
+            break;
+        case 2: // Pop
+            if (pilha_vazia(&pilha_criada) == 1)
+            {
+                printf("\nPilha vazia!\n");
+            }
+            else
+            {
+                valor = desempilhar(&pilha_criada);
 
-            imprimir_pilha(topo);
+                system("cls");
+
+                printf("\n Numero desempilhado: %.1f \n", valor);
+
+                imprimir_pilha(&pilha_criada);
+            }
+            break;
+        case 3: // Mostrar o topo
+            if (pilha_vazia(&pilha_criada) == 1)
+            {
+                printf("\nPilha vazia!\n");
+            }
+            else
+            {
+                valor = topo_da_pilha(&pilha_criada);
+                printf("\nTopo atual da Pilha: %.1f\n", valor);
+            }
 
             break;
         default:
@@ -152,8 +169,6 @@ int main()
 
             break;
         }
-        menu();
-        scanf("%i", &opcao);
     }
     system("cls");
     system("pause");
