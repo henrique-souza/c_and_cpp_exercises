@@ -2,23 +2,27 @@
 #include <stdlib.h>
 
 // Declarando estutura da lista
-struct cel
+struct Cel
 {
     int conteudo;
-    struct cel *prox;
+    struct Cel *prox;
 };
 
 // Inicializando uma lista vazia
-void criar_lista_vazia(cel *lista_vazia)
+void criar_lista_vazia(Cel *lista_vazia)
 {
     lista_vazia->prox = NULL;
 }
 
-// Função que imprime a lista salva
-void imprimir_lista(cel *lista_salva)
+int lista_vazia(Cel *lista_armazenada)
 {
-    cel *conteudo_salvo;
-    system("cls");
+    return (lista_armazenada->prox == NULL);
+}
+// Função que imprime a lista salva
+void imprimir_lista(Cel *lista_salva)
+{
+    Cel *conteudo_salvo;
+    // system("cls");
 
     printf("Lista salva\n");
 
@@ -28,11 +32,11 @@ void imprimir_lista(cel *lista_salva)
     }
 }
 
-void inserir_valor(cel *lista_armazenada, int dado)
+void inserir_elemento(Cel *lista_armazenada, int dado)
 {
-    cel *novo_elemento;
+    Cel *novo_elemento;
 
-    novo_elemento = (cel *)malloc(sizeof(cel));
+    novo_elemento = (Cel *)malloc(sizeof(Cel));
 
     if (novo_elemento != NULL)
     {
@@ -47,9 +51,22 @@ void inserir_valor(cel *lista_armazenada, int dado)
     }
 }
 
-void remover_elemento_especifico(cel *lista_armazenada, int dado)
+void buscar_elemento(Cel *lista_armazenada, int elemento)
 {
-    cel *ponteiro_posterior, *ponteiro_anterior;
+    Cel *elemento_a_buscar;
+
+    elemento_a_buscar = lista_armazenada->prox;
+
+    while (elemento_a_buscar != NULL && elemento_a_buscar->conteudo != elemento)
+    {
+        elemento_a_buscar = elemento_a_buscar->prox;
+    }
+    printf("\nElemento buscado: %d \n", elemento_a_buscar->conteudo);
+}
+
+void remover_elemento(Cel *lista_armazenada, int dado)
+{
+    Cel *ponteiro_posterior, *ponteiro_anterior;
 
     ponteiro_anterior = NULL;
 
@@ -62,51 +79,54 @@ void remover_elemento_especifico(cel *lista_armazenada, int dado)
         ponteiro_posterior = ponteiro_posterior->prox;
     }
 
+    // Se o ponteiro for válido, ele irá remover o elemento no meio ou no final da lista encadeada
     if (ponteiro_anterior != NULL)
     {
         if (ponteiro_posterior != NULL)
         {
             ponteiro_anterior->prox = ponteiro_posterior->prox;
 
-            free(ponteiro_posterior);
+            printf("\nValor %d Removido\n", ponteiro_posterior->conteudo);
 
-            printf("Valor Removido\n");
+            free(ponteiro_posterior);
         }
         else
         {
-            printf("Valor nao encontrado\n");
+            printf("\nValor nao encontrado\n");
         }
     }
+    // Se não, remove elemento do início da lista
+    // Ou imprime uma mensagem caso não haja mais elementos na lista encadeada
     else
     {
         if (ponteiro_posterior != NULL && ponteiro_posterior->conteudo == dado)
         {
             lista_armazenada->prox = ponteiro_posterior->prox;
 
-            free(ponteiro_posterior);
+            printf("\nValor %d Removido\n", ponteiro_posterior->conteudo);
 
-            printf("Valor Removido\n");
+            free(ponteiro_posterior);
         }
         else
         {
-            printf("Lista Vazia\n");
+            printf("\n\n");
+
+            system("cls");
+
+            printf("Lista vazia\n");
         }
     }
 }
 
-int imprimir_lista_vazia(cel *lista_armazenada)
-{
-    return (lista_armazenada->prox == NULL);
-}
-
 int main()
 {
-    cel lista;
+    // declarando uma variável lista usando a estrutura de 'Cel'
+    Cel lista;
 
-    int valor_armazenado, opcao_escolhida;
+    // Declarando variáveis a serem utilizadas
+    int valor_armazenado, opcao_escolhida, LOOPING = 1;
 
-    int LOOPING = 1;
-
+    // Inicializando uma lista
     criar_lista_vazia(&lista);
 
     while (LOOPING != 0)
@@ -114,6 +134,7 @@ int main()
         printf("\n1.\tInserir elemento no inicio da Lista\n");
         printf("2.\tRemover elemento especifico da Lista\n");
         printf("3.\tImprimir Lista Encadeada\n");
+        printf("4.\tBuscar elemento especifico da Lista\n");
         printf("0.\tSair\n");
         printf("\n\nEscolha uma das opcoes: ");
         scanf("%d", &opcao_escolhida);
@@ -127,7 +148,7 @@ int main()
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
 
-            inserir_valor(&lista, valor_armazenado);
+            inserir_elemento(&lista, valor_armazenado);
 
             printf("\n\n");
 
@@ -140,9 +161,7 @@ int main()
             printf("Valor? ");
             scanf("%d", &valor_armazenado);
 
-            imprimir_lista(&lista);
-
-            remover_elemento_especifico(&lista, valor_armazenado);
+            remover_elemento(&lista, valor_armazenado);
 
             imprimir_lista(&lista);
 
@@ -150,7 +169,7 @@ int main()
 
             break;
         case 3:
-            if (imprimir_lista_vazia(&lista))
+            if (lista_vazia(&lista))
             {
                 printf("\n\n");
 
@@ -166,6 +185,13 @@ int main()
 
                 printf("\n\n");
             }
+            break;
+        case 4:
+            printf("Valor? ");
+            scanf("%d", &valor_armazenado);
+
+            buscar_elemento(&lista, valor_armazenado);
+
             break;
         default:
             printf("Opcao inexistente!\n");
