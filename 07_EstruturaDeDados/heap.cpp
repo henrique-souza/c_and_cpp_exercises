@@ -1,35 +1,23 @@
-#include <cstdio>
-#include <cstdlib>
 #include <bits/stdc++.h>
-
-#define MAX_LENGHT 10
 
 //
 // Created by Henrique Souza on 05/09/2022.
 // Graphic representation of this algorithm in ./README.md
 //
 
-typedef struct Father {
+struct Node {
     int value;
-    struct Father *left_child, *right_child;
-} Father;
+    struct Node *left_child, *right_child;
+};
 
-typedef struct {
-    Father *root;
-} HeapTree;
-
-int father(int *heap_value, int position) {
-    return heap_value[position / 2 - 1];
+struct Node *new_node(int value) {
+    struct Node *temp = (struct Node *) malloc(sizeof(struct Node));
+    temp->value = value;
+    temp->left_child = temp->right_child = NULL;
+    return temp;
 }
 
-int left_child(int *heap_value, int position) {
-    return heap_value[position * 2 - 1];
-}
-
-int right_child(int *heap_value, int position) {
-    return heap_value[position * 2];
-}
-
+// Corrige a posição dos valores na árvore
 void heapify(int array_in[], int array_index, int subtree_root_index) {
     // Initialize largest_value as root
     int largest_value = subtree_root_index;
@@ -64,6 +52,7 @@ void heapify(int array_in[], int array_index, int subtree_root_index) {
     }
 }
 
+// Imprime os dados armazenados na árvore
 void print_heap(int array_in[], int array_size) {
     printf("\n\t\tHEAP TREE BELOW\n\n");
     for (int index = 0; index < array_size; index++) {
@@ -71,6 +60,7 @@ void print_heap(int array_in[], int array_size) {
     }
 }
 
+// Função que insere valor na árvore
 void insert_value(int array_in[], int &value, int key) {
     value = value + 1;
 
@@ -79,21 +69,22 @@ void insert_value(int array_in[], int &value, int key) {
     heapify(array_in, value, value - 1);
 }
 
-// Function to delete the root from Heap
-void deleteRoot(int array_in[], int array_index, int chosen_element) {
-    // Get the last element
-    chosen_element = array_in[array_index - 1];
+// Função que deleta a raiz da árvore
+//void deleteRoot(int array_in[], int array_index, int chosen_element) {
+//    // Get the last element
+//    chosen_element = array_in[array_index - 1];
+//
+//    // Replace root with last element
+//    array_in[0] = chosen_element;
+//
+//    // Decrease size of heap by 1
+//    array_index = array_index - 1;
+//
+//    // heapify the root node
+//    heapify(array_in, array_index, 0);
+//}
 
-    // Replace root with last element
-    array_in[0] = chosen_element;
-
-    // Decrease size of heap by 1
-    array_index = array_index - 1;
-
-    // heapify the root node
-    heapify(array_in, array_index, 0);
-}
-
+// Menu da aplicação
 void menu() {
     printf("\n\n\tMENUS DE OPCOES\n"
            "1.\tConsultar valores do Heap\n"
@@ -104,7 +95,8 @@ void menu() {
            "\n\nEscolha uma das opcoes: ");
 }
 
-void inorder_walk(struct Father *root) {
+// Percorrendo a árvore em ordem
+void inorder_walk(struct Node *root) {
     if (root == NULL) {
         return;
     }
@@ -118,11 +110,8 @@ void inorder_walk(struct Father *root) {
 }
 
 int main() {
-    int option, /*new_value, value_to_delete,*/ chosen_position;
-    int heap[MAX_LENGHT] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
-    int new_lenght_heap = 11;
-    int new_value = 15;
-    int value_to_delete = 15;
+    int option, chosen_position;
+    // heap = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
 
     do {
         menu();
@@ -132,57 +121,12 @@ int main() {
             case 0:
                 exit(0);
             case 1:
-                system("cls");
-
-                printf("\n\nEscolha uma das posicoes entre 1 e 10: ");
-                scanf("%d", &chosen_position);
-
-                system("cls");
-
-                if (chosen_position >= 1 && chosen_position <= MAX_LENGHT) {
-                    printf("\n\tValor do No da Arvore atual: %d", heap[chosen_position - 1]);
-                    printf("\n\tValor do pai: %d", father(heap, chosen_position));
-
-                    if (chosen_position * 2 - 1 > 11) {
-                        printf("\n\tO No '%d' nao tem filho da esquerda", heap[chosen_position - 1]);
-                    } else {
-                        printf("\n\tValor do filho da esquerda: %d do No: %d", left_child(heap, chosen_position),
-                               heap[chosen_position - 1]);
-                    }
-                    if (chosen_position * 2 >= 11) {
-                        printf("\n\tO No '%d' nao tem filho da direita\n", heap[chosen_position - 1]);
-                    } else {
-                        printf("\n\tValor do filho da direita: %d do No: %d\n", right_child(heap, chosen_position),
-                               heap[chosen_position - 1]);
-                    }
-                }
-                if (chosen_position < 0 || chosen_position > MAX_LENGHT) {
-                    printf("\nPosicao invalida");
-                }
                 break;
-
             case 2:
-                //system("cls");
-                // printf("\n\nValor a ser inserido: ");
-                // scanf("%d", &new_value);
-
-                insert_value(heap, new_lenght_heap, new_value);
-
-                print_heap(heap, MAX_LENGHT);
                 break;
             case 3:
-                //system("cls");
-                // printf("\n\nValor a ser deletado: ");
-                // scanf("%d", &value_to_delete);
-
-                deleteRoot(heap, new_lenght_heap, value_to_delete);
-
-                print_heap(heap, MAX_LENGHT);
                 break;
             case 4:
-                system("cls");
-
-                print_heap(heap, MAX_LENGHT);
                 break;
             default:
                 break;
