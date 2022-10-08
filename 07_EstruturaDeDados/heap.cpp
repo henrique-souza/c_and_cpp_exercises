@@ -14,8 +14,8 @@ typedef struct Father {
     struct Father *left_child, *right_child;
 } Father;
 
-typedef struct HeapTree {
-    Father *raiz;
+typedef struct {
+    Father *root;
 } HeapTree;
 
 int father(int *heap_value, int position) {
@@ -104,19 +104,18 @@ void menu() {
            "\n\nEscolha uma das opcoes: ");
 }
 
-//void inorder_walk(int *heap_value, int position)
-//{
-//    if (heap_value == NULL) {
-//        return;
-//    }
-//    if (heap_value->left_child != NULL) {
-//        inorder_walk(heap_value->left);
-//    }
-//    printf("%d ", heap_value->value);
-//    if (heap_value->right != NULL) {
-//        inorder_walk(heap_value->right);
-//    }
-//}
+void inorder_walk(struct Father *root) {
+    if (root == NULL) {
+        return;
+    }
+    if (root->left_child != NULL) {
+        inorder_walk(root->left_child);
+    }
+    printf("%d ", root->value);
+    if (root->right_child != NULL) {
+        inorder_walk(root->right_child);
+    }
+}
 
 int main() {
     int option, /*new_value, value_to_delete,*/ chosen_position;
