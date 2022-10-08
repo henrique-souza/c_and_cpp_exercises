@@ -119,7 +119,6 @@ int main()
         case 0:
             system("pause");
             exit(0);
-            break;
         case 1:
             inserir_pessoa();
             break;

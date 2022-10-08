@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <bits/stdc++.h>
 #define MAX_LENGHT 10
 
@@ -47,7 +47,7 @@ void heapify(int array_in[], int array_index, int subtree_root_index)
     {
         std::swap(array_in[subtree_root_index], array_in[largest_value]);
 
-        // Recursively heapify the affected sub-tree
+        // Recursively heapify the affected subtree
         heapify(array_in, array_index, largest_value);
     }
 
@@ -98,7 +98,8 @@ void deleteRoot(int array_in[], int array_index, int chosen_element)
 
 int main()
 {
-    int option, /*new_value, value_to_delete,*/ chosen_position, heap[MAX_LENGHT] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
+    int option, /*new_value, value_to_delete,*/ chosen_position;
+    int heap[MAX_LENGHT] = {17, 12, 8, 5, 3, 6, 2, 4, 2, 1};
     int new_lenght_heap = 11;
     int new_value = 15;
     int value_to_delete = 15;
@@ -118,9 +119,6 @@ int main()
         {
         case 0:
             exit(0);
-            system("pause");
-            break;
-
         case 1:
             system("cls");
 
