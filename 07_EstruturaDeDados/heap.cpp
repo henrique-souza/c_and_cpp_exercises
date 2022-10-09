@@ -17,41 +17,6 @@ struct Node *new_node(int value) {
     return temp;
 }
 
-// Corrige a posição dos valores na árvore
-void heapify(int array_in[], int array_index, int subtree_root_index) {
-    // Initialize largest_value as root
-    int largest_value = subtree_root_index;
-    int parent = (subtree_root_index - 1) / 2;
-    int left_child = 2 * subtree_root_index + 1;
-    int right_child = 2 * subtree_root_index + 2;
-
-    // If left child is larger than root
-    if (left_child < array_index && array_in[left_child] > array_in[largest_value]) {
-        largest_value = left_child;
-    }
-
-    // If right child is larger than largest_value so far
-    if (right_child < array_index && array_in[right_child] > array_in[largest_value]) {
-        largest_value = right_child;
-    }
-
-    // If largest_value is not root
-    if (largest_value != subtree_root_index) {
-        std::swap(array_in[subtree_root_index], array_in[largest_value]);
-
-        // Recursively heapify the affected subtree
-        heapify(array_in, array_index, largest_value);
-    }
-
-    if (array_in[parent] > 0) {
-        if (array_in[subtree_root_index] > array_in[parent]) {
-            std::swap(array_in[subtree_root_index], array_in[parent]);
-
-            heapify(array_in, array_index, parent);
-        }
-    }
-}
-
 // Imprime os dados armazenados na árvore
 void print_heap(int array_in[], int array_size) {
     printf("\n\t\tHEAP TREE BELOW\n\n");
@@ -61,12 +26,15 @@ void print_heap(int array_in[], int array_size) {
 }
 
 // Função que insere valor na árvore
-void insert_value(int array_in[], int &value, int key) {
-    value = value + 1;
+struct Node *insert_value(struct Node *father, int value) {
+    if (father == NULL) return new_node(value);
 
-    array_in[value - 1] = key;
-
-    heapify(array_in, value, value - 1);
+    if (value < father->value) {
+        father->left_child = insert_value(father->left_child, value);
+    } else if (value > father->value) {
+        father->right_child = insert_value(father->right_child, value);
+    }
+    return father;
 }
 
 // Função que deleta a raiz da árvore
