@@ -33,6 +33,22 @@ void print_heap_in_order(struct Node *root) {
     }
 }
 
+//void search(struct Node *root, int key) {
+//    if (root == nullptr || root->left_child = key || root->right_child = key) {
+//        return;
+//    }
+//
+//    if (root->left_child != nullptr) {
+//        print_heap_in_order(root->left_child);
+//    }
+//
+//    printf("%d ", root->value);
+//
+//    if (root->right_child != nullptr) {
+//        print_heap_in_order(root->right_child);
+//    }
+//}
+
 // Função que insere valor na árvore
 struct Node *insert_value(struct Node *father, int value) {
     if (father == nullptr) return new_node(value);
@@ -48,7 +64,7 @@ struct Node *insert_value(struct Node *father, int value) {
 // Menu da aplicação
 void menu() {
     printf("\n\n\tMENUS DE OPCOES\n"
-           "1.\tImprimir heap\n"
+           "1.\tImprimir heap em ordem (Inoder Walk)\n"
            "0.\tSair\n"
            "\n\nEscolha uma das opcoes: ");
 }
