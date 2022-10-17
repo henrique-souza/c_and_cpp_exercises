@@ -40,6 +40,7 @@ void print_heap_in_order(struct Node *root)
     }
 }
 
+// Função que busca valor na árvore
 void search(struct Node *root, int k)
 {
     if (root == NULL || root->value == k)
