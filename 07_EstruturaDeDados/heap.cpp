@@ -86,7 +86,7 @@ void menu()
 
 int main()
 {
-    int option, value_to_search, LOOPING = 1;
+    int option, value, LOOPING = 1;
     struct Node *root = NULL;
 
     // Fazendo atribuição do tamanho do Heap (10)
@@ -121,8 +121,8 @@ int main()
             break;
         case 2:
             printf("\nDigite valor procurado: ");
-            scanf("%d", value_to_search);
-            search(root, value_to_search);
+            scanf("%d", value);
+            search(root, value);
             break;
         default:
             break;
