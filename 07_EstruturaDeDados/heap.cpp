@@ -80,6 +80,7 @@ void menu()
     printf("\n\n\tMENUS DE OPCOES\n"
            "1.\tImprimir heap em ordem (Inoder Walk)\n"
            "2.\tBuscar elemento do Heap\n"
+           "3.\tImprimir o valor minimo do Heap\n"
            "0.\tSair\n"
            "\n\nEscolha uma das opcoes: ");
 }
@@ -123,6 +124,9 @@ int main()
             printf("\nDigite valor procurado: ");
             scanf("%d", value);
             search(root, value);
+            break;
+        case 3:
+        // Retornar o valor mínimo do Heap
             break;
         default:
             break;
