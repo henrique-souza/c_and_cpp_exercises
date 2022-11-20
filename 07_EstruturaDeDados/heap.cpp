@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 //
-// Created by Henrique Souza on 17/10/2022.
+// Created by Henrique Souza on 20/11/2022.
 //
 
 struct Node {
@@ -69,13 +69,23 @@ struct Node *minimum_value(struct Node *node) {
     return node;
 }
 
+struct Node *maximum_value(struct Node *node) {
+    if (node == NULL) {
+        return NULL;
+    }
+    while (node->right_child != NULL) {
+        node = node->right_child;
+    }
+    return node;
+}
+
 // Menu da aplicação
 void menu() {
     printf("\n\n\tMENUS DE OPCOES\n"
            "1.\tImprimir heap em ordem (Inoder Walk)\n"
            "2.\tBuscar elemento do Heap\n"
            "3.\tImprimir o valor minimo do Heap\n"
-           "4.\tImprimir o valor máximo do Heap\n"
+           "4.\tImprimir o valor maximo do Heap\n"
            "5.\tImprimir o sucessor\n"
            "6.\tInserir novo valor no Heap\n"
            "7.\tExcluir valor do Heap\n"
@@ -126,6 +136,7 @@ int main() {
                 break;
             case 4:
                 // Retorna o valor máximo do Heap
+                printf("Maximo da arvore: %d", maximum_value(root)->value);
                 break;
             case 5:
                 // Retorna o sucessor do Heap
