@@ -18,44 +18,44 @@ struct Node *new_node(int value) {
 }
 
 // Imprime os dados armazenados na árvore percorrendo-a em ordem
-void print_heap_in_order(struct Node *root) {
-    if (root == NULL) {
+void print_heap_in_order(struct Node *node) {
+    if (node == NULL) {
         return;
     }
 
-    if (root->left_child != NULL) {
-        print_heap_in_order(root->left_child);
+    if (node->left_child != NULL) {
+        print_heap_in_order(node->left_child);
     }
 
-    printf("%d ", root->value);
+    printf("%d ", node->value);
 
-    if (root->right_child != NULL) {
-        print_heap_in_order(root->right_child);
+    if (node->right_child != NULL) {
+        print_heap_in_order(node->right_child);
     }
 }
 
 // Função que busca valor na árvore
-void search(struct Node *root, int k) {
-    if (root == NULL || root->value == k) {
+void search(struct Node *node, int key) {
+    if (node == NULL || node->value == key) {
         return;
-    } else if (root->value > k) {
-        search(root->left_child, k);
+    } else if (node->value > key) {
+        search(node->left_child, key);
     } else {
-        search(root->right_child, k);
+        search(node->right_child, key);
     }
 }
 
 // Função que insere valor na árvore
-struct Node *insert_value(struct Node *father, int value) {
-    if (father == NULL)
+struct Node *insert_value(struct Node *node, int value) {
+    if (node == NULL)
         return new_node(value);
 
-    if (value < father->value) {
-        father->left_child = insert_value(father->left_child, value);
-    } else if (value > father->value) {
-        father->right_child = insert_value(father->right_child, value);
+    if (value < node->value) {
+        node->left_child = insert_value(node->left_child, value);
+    } else if (value > node->value) {
+        node->right_child = insert_value(node->right_child, value);
     }
-    return father;
+    return node;
 }
 
 // Função que retorna o valor mínimo na árvore
@@ -69,6 +69,7 @@ struct Node *minimum_value(struct Node *node) {
     return node;
 }
 
+// Função que retorna o valor máximo na árvore
 struct Node *maximum_value(struct Node *node) {
     if (node == NULL) {
         return NULL;
@@ -79,26 +80,42 @@ struct Node *maximum_value(struct Node *node) {
     return node;
 }
 
+//// Função que retorna o sucessor na árvore
+//struct Node *successor(struct Node *node, int value) {
+//
+//}
+
 // Menu da aplicação
 void menu() {
     printf("\n\n\tMENUS DE OPCOES\n"
            "1.\tImprimir heap em ordem (Inoder Walk)\n"
-           "2.\tBuscar elemento do Heap\n"
-           "3.\tImprimir o valor minimo do Heap\n"
-           "4.\tImprimir o valor maximo do Heap\n"
-           "5.\tImprimir o sucessor\n"
-           "6.\tInserir novo valor no Heap\n"
-           "7.\tExcluir valor do Heap\n"
+           "2.\tImprimir o valor minimo do Heap\n"
+           "3.\tImprimir o valor maximo do Heap\n"
+           "4.\tImprimir o sucessor\n"
+           "5.\tInserir novo valor no Heap\n"
+           "6.\tExcluir valor do Heap\n"
            "0.\tSair\n"
            "\n\nEscolha uma das opcoes: ");
 }
 
 int main() {
-    int option, value, LOOPING = 1;
-    struct Node *root = NULL;
+    int option, HEAP_MAX_SIZE = 11;
+    struct Node *heapNodes = NULL;
 
-    // Fazendo atribuição do tamanho do Heap (10)
-    root = insert_value(root, 10);
+    // Fazendo atribuição do tamanho do Heap
+    heapNodes = insert_value(heapNodes, HEAP_MAX_SIZE);
+
+    // Inserindo valores no Heap
+    insert_value(heapNodes, 17);
+    insert_value(heapNodes, 12);
+    insert_value(heapNodes, 8);
+    insert_value(heapNodes, 5);
+    insert_value(heapNodes, 3);
+    insert_value(heapNodes, 6);
+    insert_value(heapNodes, 2);
+    insert_value(heapNodes, 4);
+    insert_value(heapNodes, 2);
+    insert_value(heapNodes, 1);
 
     do {
         menu();
@@ -108,47 +125,30 @@ int main() {
             case 0:
                 exit(0);
             case 1:
-                // Inserindo os valores aleatoriamente
-                insert_value(root, 17);
-                insert_value(root, 12);
-                insert_value(root, 8);
-                insert_value(root, 5);
-                insert_value(root, 3);
-                insert_value(root, 6);
-                insert_value(root, 2);
-                insert_value(root, 4);
-                insert_value(root, 2);
-                insert_value(root, 1);
-
                 // Imprimindo em ordem
-                print_heap_in_order(root);
+                print_heap_in_order(heapNodes);
 
                 printf("\n");
                 break;
             case 2:
-                printf("\nDigite valor procurado: ");
-                scanf("%d", value);
-                search(root, value);
+                // Retorna o valor mínimo do Heap
+                printf("Minimo da arvore: %d", minimum_value(heapNodes)->value);
                 break;
             case 3:
-                // Retorna o valor mínimo do Heap
-                printf("Minimo da arvore: %d", minimum_value(root)->value);
+                // Retorna o valor máximo do Heap
+                printf("Maximo da arvore: %d", maximum_value(heapNodes)->value);
                 break;
             case 4:
-                // Retorna o valor máximo do Heap
-                printf("Maximo da arvore: %d", maximum_value(root)->value);
-                break;
-            case 5:
                 // Retorna o sucessor do Heap
                 break;
-            case 6:
+            case 5:
                 // Insere novo valor no Heap
                 break;
-            case 7:
+            case 6:
                 // Excluir valor apontado do Heap
                 break;
             default:
                 break;
         }
-    } while (LOOPING != 0);
+    } while (true);
 }
