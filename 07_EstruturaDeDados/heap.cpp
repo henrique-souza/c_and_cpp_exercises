@@ -27,7 +27,7 @@ void print_heap_in_order(struct Node *node) {
         print_heap_in_order(node->left_child);
     }
 
-    printf("%d ", node->value);
+    printf("%d  ", node->value);
 
     if (node->right_child != NULL) {
         print_heap_in_order(node->right_child);
@@ -87,8 +87,8 @@ struct Node *maximum_value(struct Node *node) {
 
 // Menu da aplicação
 void menu() {
-    printf("\n\n\tMENUS DE OPCOES\n"
-           "1.\tImprimir heap em ordem (Inoder Walk)\n"
+    printf("\n\t\tMENUS DE OPCOES\n"
+           "1.\tImprimir heap em ordem (Inorder Walk)\n"
            "2.\tImprimir o valor minimo do Heap\n"
            "3.\tImprimir o valor maximo do Heap\n"
            "4.\tImprimir o sucessor\n"
@@ -99,7 +99,7 @@ void menu() {
 }
 
 int main() {
-    int option, HEAP_MAX_SIZE = 11;
+    int option, HEAP_MAX_SIZE = 11, new_value;
     struct Node *heapNodes = NULL;
 
     // Fazendo atribuição do tamanho do Heap
@@ -126,23 +126,32 @@ int main() {
                 exit(0);
             case 1:
                 // Imprimindo em ordem
+                printf("\n\tHEAP EM ORDEM\n");
                 print_heap_in_order(heapNodes);
-
                 printf("\n");
                 break;
             case 2:
                 // Retorna o valor mínimo do Heap
-                printf("Minimo da arvore: %d", minimum_value(heapNodes)->value);
+                printf("\nMinimo da arvore: %d \n", minimum_value(heapNodes)->value);
                 break;
             case 3:
                 // Retorna o valor máximo do Heap
-                printf("Maximo da arvore: %d", maximum_value(heapNodes)->value);
+                printf("\nMaximo da arvore: %d \n", maximum_value(heapNodes)->value);
                 break;
             case 4:
                 // Retorna o sucessor do Heap
                 break;
             case 5:
                 // Insere novo valor no Heap
+                printf("\nDigite novo valor a ser inserido no Heap: ");
+                scanf("%d", &new_value);
+
+                insert_value(heapNodes, new_value);
+
+                printf("\n\tValor inserido: \n");
+                print_heap_in_order(heapNodes);
+
+                printf("\n");
                 break;
             case 6:
                 // Excluir valor apontado do Heap
