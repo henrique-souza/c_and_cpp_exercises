@@ -21,6 +21,6 @@ int main()
    printf("\nValor da variavel modificada por um Ponteiro de valor 100: %d \n", *ponteiro);
    printf("Valor da variavel modificada (que inicalmente valia 70): %d \n", numero_digitado);
    printf("Valor armazenado nao modificado: %d \n", valor_da_variavel);
-   printf("Mostrando o Endereco do Ponteiro (quando seu valor for 100): %p \n", *ponteiro);
+   printf("Mostrando o Endereco do Ponteiro (quando seu valor for 100): %d \n", *ponteiro);
    printf("\n\n");
 }
