@@ -115,8 +115,7 @@ void removerTodosElementos(lista_encadeada *apontarListaArmazenada)
 
     while (ponteiro != NULL)
     {
-
-        free(ponteiro);
+        //free(ponteiro);
         ponteiro = ponteiro->proximo_ponteiro;
         apontarListaArmazenada->primeiro_ponteiro = ponteiro;
     }
@@ -173,7 +172,7 @@ int main()
         printf("Escolha uma das opcoes: ");
         scanf("%d", &opcaoEscolhida);
 
-        system("cls");
+        system("clear");
         switch (opcaoEscolhida)
         {
         case 1:

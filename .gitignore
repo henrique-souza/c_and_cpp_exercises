@@ -8,3 +8,6 @@
 
 # CMake
 cmake-build-*/
+
+# output
+output/
