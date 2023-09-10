@@ -1,5 +1,4 @@
 #include <stdio.h>
-// #include <stdlib.h>
 #include <time.h>
 
 // declarando a função que calcula o fatorial do numero
