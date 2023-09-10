@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main()
 {
     int produto, numero;
+    clock_t start_time = clock();
 
     produto = 1;
 
@@ -16,6 +18,10 @@ int main()
     }
 
     printf("Fatorial do número %d eh: %d", numero, produto);
+
+    double elapsed_time = (double)(clock() - start_time) / CLOCKS_PER_SEC;
+
+    printf("\nDone in %f seconds", elapsed_time);
 
     return 0;
 }
