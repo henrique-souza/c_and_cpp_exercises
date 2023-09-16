@@ -11,3 +11,5 @@ cmake-build-*/
 
 # output
 output/
+.ccls-cache
+
