@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
-// parei no começo de Fibonacci - Tenenbaum - página 157
+// parei no começo de Fibonacci - Tenenbaum - página 157 (Adobe Web) / 137 (Adobe Desktop)
 
 // declarando a função que calcula o fatorial do numero
 int calcularFatorial(int produto, int numero);
