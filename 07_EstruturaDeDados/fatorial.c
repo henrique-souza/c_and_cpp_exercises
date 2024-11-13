@@ -30,7 +30,7 @@ int main()
     return 0;
 }
 
-int calcularFatorial(int numero, __attribute__((unused)) int produto)
+int calcularFatorial(int numero, int produto)
 {
     int fatorial, x, y;
     y = 0;
@@ -41,9 +41,9 @@ int calcularFatorial(int numero, __attribute__((unused)) int produto)
     }
     else
     {
-        // definicao de n!
+        // definição de n!
         x = numero - 1;
-        y = calcularFatorial(x, y);
+        y = calcularFatorial(x, 0);
         fatorial = numero * y;
     }
 
